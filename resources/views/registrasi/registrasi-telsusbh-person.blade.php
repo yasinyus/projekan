@@ -48,6 +48,7 @@
                 <div class="col-xl-6 fv-row">
                         <label class="form-label fw-bolder text-dark fs-6">Nomor KTP Penanggung Jawab</label>
                         <input class="form-control form-control-lg form-control"  type="text" placeholder="Masukan No. KTP Penanggung Jawab" name="nik" autocomplete="off" />
+                        <div class="text-muted">KTP Pemohon adalah KTP penerima kuasa untuk mengurus izin. Jika pemohon adalah Direktur Perusahaan, maka KTP pemohon adalah KTP Direktur.</div>
                 </div>
                 <div class="col-xl-6 fv-row">
                         <label class="form-label fw-bolder text-dark fs-6">No Telepon / HP Penanggung Jawab</label>
@@ -83,6 +84,9 @@
                         <label class="form-label fw-bolder text-dark fs-6">Kode Pos</label>
                         <input class="form-control form-control-lg form-control" readonly type="text" placeholder="" name="postalcode" autocomplete="off" />
                 </div>
+            </div>
+            <div class="fv-row mb-4">
+                <div class="g-recaptcha" data-sitekey="6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI"></div>
             </div>
         </div>
         <div class="card-footer d-flex justify-content-end py-6 px-9">

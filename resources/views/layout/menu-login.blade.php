@@ -253,29 +253,6 @@
                 <!--begin::Toolbar wrapper-->
                 <div class="d-flex align-items-stretch flex-shrink-0">
                     <!--begin::User-->
-                    <div class="d-flex align-items-center ms-1 ms-lg-3" id="kt_header_user_menu_toggle" th:if="${#authentication.principal != 'anonymousUser'}">
-                        <div class="btn btn-icon btn-light pulse mt-10 mb-10" data-kt-menu-trigger="click" data-kt-menu-attach="parent" data-kt-menu-placement="bottom-end">
-                            <i class="fa fa-user" style="font-size: 16px;"></i>
-                            <span class="pulse-ring"></span>
-                        </div>
-                        <div class="text-center" style="margin-left: 5px;">Febryan Ramadhan</div> 
-                        <div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-800 menu-state-bg menu-state-primary fw-bold py-4 fs-6 w-275px" data-kt-menu="true" style="">
-                            <div class="menu-item px-3">
-                                <div class="menu-content d-flex align-items-center px-3">
-                                    <div class="d-flex flex-column">
-                                        <div class="fw-bolder d-flex align-items-center fs-5"><span sec:authentication="principal.username" >Febryan Ramadhan<br>8211892903232</span></div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="separator my-2"></div>
-                            <div class="menu-item px-5">
-                                <a href="#" class="menu-link px-5">Dashboard</a>
-                            </div>
-                            <div class="menu-item px-5">
-                                <a href="#" class="menu-link px-5">Keluar</a>
-                            </div>
-                        </div>
-                    </div>
 
                     <!--begin::Heaeder menu toggle-->
                     <div class="d-flex align-items-center d-lg-none ms-2 me-n3" title="Show header menu">

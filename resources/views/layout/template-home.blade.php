@@ -25,7 +25,7 @@
                     <div class="container">
                         <div class="d-flex align-items-center justify-content-between">
                             <div class="d-lg-block" id="kt_header_nav_wrapper">
-                               @include('layout.menu');
+                               @include('layout.menu-home');
                             </div>
                         </div>
                     </div>
@@ -38,7 +38,7 @@
                 </div>
             </div>
             <div class="page d-flex flex-row flex-column-fluid">
-                <div class="wrapper d-flex flex-column flex-row-fluid" id="kt_wrapper">
+                <div class="flex-column flex-row-fluid" id="kt_wrapper">
                     {{-- @include('layout.menu'); --}}
                     <div class="content d-flex flex-column flex-column-fluid" id="kt_content">
                         <div class="post d-flex flex-column-fluid" id="kt_post">
