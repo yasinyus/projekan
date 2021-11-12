@@ -112,8 +112,11 @@ Route::get('/form-penomoran', function () {
 
 
 Route::get('/master/kode-izin/{jenisIzin}', [MasterController::class, 'getKodeIzin']);
+Route::get('/master/nama-izin/jaringan/{kbli}', [MasterController::class, 'getNamaIzinJaringanByKbli']);
+Route::get('/master/nama-izin/jaringan-tertutup', [MasterController::class, 'getNamaIzinJaringanTertutup']);
 Route::get('/dashboard', [DashboardController::class, 'index']);
 Route::get('/perizinan/dalam-proses', [PerizinanController::class, 'dalamProses']);
+Route::get('/perizinan/aktif/{kib_id}', [PerizinanController::class, 'getPerizinanAktifByKibId']);
 Route::post('/perizinan/daftar', [PerizinanController::class, 'daftar']);
 Route::get('/persyaratan/{perizinanId}', [PersyaratanController::class, 'persyaratan']);
 Route::get('/perizinan/email-perizinan', function () {

@@ -101,10 +101,9 @@ var KTTablePerizinanDalamProses = function () {
                 var currentRow = $(this).closest("tr");
 
                 var data = $('#kt_datatable_permohonan_perizinan').DataTable().row(currentRow).data();
-                $("#perizinan-id").val(data.applicationId);
-                
+                currentId = data.id;
                 $.ajax({
-                    url: "/application/on-process/" + data.applicationId + "/next",
+                    url: "/application/on-process/" + data.id + "/next",
                     type: "get",
                     headers: {"X-CSRF-TOKEN": $("meta[name='_csrf']").attr("content")},                    
                     success: function (data) {
@@ -120,6 +119,11 @@ var KTTablePerizinanDalamProses = function () {
                         	disableUlo();
                         }
                     },
+                    error: function(error) {
+                        enablePersyaratan();
+                        enablePenomoran();
+                        enableUlo();
+                    }
                 });
             })
         });
@@ -183,7 +187,7 @@ var KTTablePerizinanDalamProses = function () {
     		e.preventDefault();
     		$("#kt_modal_next_step").modal('hide');
     		let nextFormSelected = $('input[name="next_form"]:checked').val();
-    		let id = $("#perizinan-id").val();
+    		let id = currentId;
     		if (nextFormSelected=='ulo') {
     			$("#kt_modal_ulo").modal('show');
     			$("#perizinan-id-ulo").val(id);
