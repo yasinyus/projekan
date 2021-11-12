@@ -31,8 +31,7 @@ class PerizinanController extends Controller
                 ->leftJoin('jenis_izin', 'jenis_izin.id', '=', 'kode_izin.jenis_izin_id');                
                 //where status <> 'SKLO'
         $total_records = $query->count();
-        $per_page = $query->orderBy('updated_at', 'DESC')->offset($offset)->take($limit)->get();        
-
+        $per_page = $query->orderBy('updated_at', 'DESC')->skip($offset)->take($limit)->get();        
         return [
             'data' => $per_page,
             'recordsTotal' => $total_records,
