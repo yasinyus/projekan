@@ -32,7 +32,7 @@
                     @include('layout.menu');
                     <!--begin::Content-->
                     <div class="content d-flex flex-column flex-column-fluid" id="kt_content">
-                        <!--<div class="toolbar" id="kt_toolbar" th:if="${#authentication.principal == 'anonymousUser'}">
+                        <div class="toolbar" id="kt_toolbar" th:if="${#authentication.principal == 'anonymousUser'}">
                         <div class="toolbar" id="kt_toolbar">
                             <div id="kt_toolbar_container" class="container-xxl d-flex flex-stack">
                             </div>
@@ -54,7 +54,7 @@
                                     </li>
                                 </ul>
                             </div>
-                        </div>-->
+                        </div>
                         
                         <!--end::Toolbar-->
                         <!--begin::Post-->
