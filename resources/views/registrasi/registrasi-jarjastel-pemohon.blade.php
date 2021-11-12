@@ -29,7 +29,7 @@
                 </div>
                 <div class="col-xl-6 fv-row">
                         <label class="form-label fw-bolder text-dark fs-6">Upload KTP Pemohon*</label>
-                        <input class="form-control form-control-lg form-control" type="file" placeholder="" name="nik_up" autocomplete="off" />
+                        <input class="form-control form-control-lg form-control" type="file" placeholder="" name="nik_up" autocomplete="off" accept="application/pdf"/>
                 </div>
                 
                 <div class="text-muted">KTP Pemohon adalah KTP penerima kuasa untuk mengurus izin. Jika pemohon adalah Direktur Perusahaan, maka KTP pemohon adalah KTP Direktur.</div>
@@ -40,7 +40,7 @@
             </div>
             <div class="fv-row mb-7">
                 <label class="form-label fw-bolder text-dark fs-6">Kartu Pegawai/Surat Keterangan Bekerja*</label>
-                <input class="form-control form-control-lg form-control-solid" type="file" placeholder="" name="kartu" autocomplete="off" />
+                <input class="form-control form-control-lg form-control-solid" type="file" placeholder="" name="kartu" autocomplete="off" accept="application/pdf"/>
             </div>
             <hr>
             <div class="fv-row mb-7">
@@ -53,7 +53,7 @@
                 </label>
             </div>
             <div class="fv-row mb-4">
-                <div class="g-recaptcha" data-sitekey="6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI"></div>
+                <div class="g-recaptcha" data-sitekey="6LfFNQkdAAAAAFXLESoqX4MXCtrQiB23mIxGq9SJ"></div>
             </div>
         </div>
         <div class="card-footer d-flex justify-content-end py-6 px-9">

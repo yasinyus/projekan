@@ -30,7 +30,7 @@
                         </label>
                     </div>
                     <div class="fv-row mb-5">
-                        <div class="g-recaptcha" data-sitekey="6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI"></div>
+                        <div class="g-recaptcha" data-sitekey="6LfFNQkdAAAAAFXLESoqX4MXCtrQiB23mIxGq9SJ"></div>
                     </div>
                     <hr>
                     <div class="text-center mb-5">

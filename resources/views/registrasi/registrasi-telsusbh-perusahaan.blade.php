@@ -15,7 +15,7 @@
                 </div>
                 <div class="col-xl-6 fv-row">
                         <label class="form-label fw-bolder text-dark fs-6">Dokumen NIB</label>
-                        <input class="form-control form-control-lg form-control" type="file" placeholder="" name="provinsi" autocomplete="off" />
+                        <input class="form-control form-control-lg form-control" type="file" placeholder="" name="provinsi" autocomplete="off" accept="application/pdf"/>
                         <div class="text-muted">format dokumen PDF dan maksimal 5Mb</div>
                 </div>
             </div>
@@ -69,20 +69,20 @@
             </div>
             <div class="fv-row mb-7">
                 <label class="form-label fw-bolder text-dark fs-6">NPWP Perusahaan/Instansi Pemerintah</label>
-                <input class="form-control form-control-lg form-control" type="file" id="npwp" name="npwp" autocomplete="off" />
+                <input class="form-control form-control-lg form-control" type="file" id="npwp" name="npwp" autocomplete="off" accept="application/pdf"/>
                 <div class="text-muted">Pastikan Anda telah memasukkan NPWP dengan benar. NPWP perusahaan akan dicek validitasnya dengan database Ditjen Pajak. Apabila NPWP perusahaan Anda tidak valid, maka Anda tidak dapat mengajukan permohonan</div>
             </div>
             <div class="fv-row mb-7">
                 <label class="form-label fw-bolder text-dark fs-6">Surat Keterangan Domisili Perusahaan/Instansi Pemerintah*</label>
-                <input class="form-control form-control-lg form-control" type="file" id="domisili" name="domisili"autocomplete="off" />
+                <input class="form-control form-control-lg form-control" type="file" id="domisili" name="domisili"autocomplete="off" accept="application/pdf"/>
             </div>
             <div class="fv-row mb-7">
                 <label class="form-label fw-bolder text-dark fs-6">Surat Kuasa Perusahaan/Instansi Pemerintah*</label>
-                <input class="form-control form-control-lg form-control" type="file" id="surat_kuasa" name="surat_kuasa" autocomplete="off" />
+                <input class="form-control form-control-lg form-control" type="file" id="surat_kuasa" name="surat_kuasa" autocomplete="off" accept="application/pdf"/>
             </div>
             <div class="fv-row mb-7">
                 <label class="form-label fw-bolder text-dark fs-6">Dasar Hukum Pembentukan Perusahaan/Instansi pemerintah*</label>
-                <input class="form-control form-control-lg form-control" type="file" id="dasar_hukum" name="dasar_hukum" autocomplete="off" />
+                <input class="form-control form-control-lg form-control" type="file" id="dasar_hukum" name="dasar_hukum" autocomplete="off" accept="application/pdf"/>
             </div>
             <div class="fv-row mb-7">
                 <div class="text-muted">Dengan ini saya menyatakan : Informasi dan dokumen yang dilampirkan adalah benar sesuai dengan dokumen asli. Apabila informasi dan dokumen yang dilampirkan tidak benar dan tidak sesuai dengan dokumen asli, maka saya bersedia dikenakan sanksi berupa masuk ke dalam daftar hitam (blacklist) hingga sanksi yang diatur dalam peraturan perundang-undangan.</div>
@@ -94,7 +94,7 @@
                 </label>
             </div>
             <div class="fv-row mb-4">
-                <div class="g-recaptcha" data-sitekey="6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI"></div>
+                <div class="g-recaptcha" data-sitekey="6LfFNQkdAAAAAFXLESoqX4MXCtrQiB23mIxGq9SJ"></div>
             </div>
         </div>
         <div class="card-footer d-flex justify-content-end py-6 px-9">
@@ -118,16 +118,30 @@
 
         }
     });
-    // $('#npwp').change(function () {
-    //     // alert('changed');
-    //     var npwp = document.getElementById("npwp").files[0].name;
-    //     if (npwp=="") {
-    //         $("#ceksyarat").removeAttr("disabled");
-    //     }else{
-    //         $('#ceksyarat').prop('disabled', true);
 
-    //     }
-    // });
+    function cek_mandatory(){
+        var domisili = document.getElementById("domisili").files.length;
+        var surat_kuasa = document.getElementById("surat_kuasa").files.length;
+        var dasar_hukum = document.getElementById("dasar_hukum").files.length;
+        // console.log(domisili);
+        if (domisili==0 || surat_kuasa==0 || dasar_hukum==0) {
+            $('#ceksyarat').prop('disabled', true);
+        }else{
+            $("#ceksyarat").removeAttr("disabled");
+        }
+    }
+
+    $('#domisili').change(function () {
+        cek_mandatory();
+    });
+
+    $('#surat_kuasa').change(function () {
+        cek_mandatory();
+    });
+
+    $('#dasar_hukum').change(function () {
+        cek_mandatory();
+    });
         
 </script>
 @endsection

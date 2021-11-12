@@ -49,7 +49,7 @@
                     <input class="form-control form-control-lg form-control" type="password" placeholder="Masukan Konfirmasi Password" name="confirm-password" autocomplete="off" required/>
                 </div>
                 <div class="fv-row mb-5">
-                    <div class="g-recaptcha" data-sitekey="6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI"></div>
+                    <div class="g-recaptcha" data-sitekey="6LfFNQkdAAAAAFXLESoqX4MXCtrQiB23mIxGq9SJ"></div>
                 </div>
                 <div class="text-center">
                     <button type="submit" id="kt_sign_up_submit" class="btn btn-lg bg-purple w-100">

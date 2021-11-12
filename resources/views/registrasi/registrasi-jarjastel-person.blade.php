@@ -86,7 +86,7 @@
                 </div>
             </div>
             <div class="fv-row mb-4">
-                <div class="g-recaptcha" data-sitekey="6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI"></div>
+                <div class="g-recaptcha" data-sitekey="6LfFNQkdAAAAAFXLESoqX4MXCtrQiB23mIxGq9SJ"></div>
             </div>
         </div>
         <div class="card-footer d-flex justify-content-end py-6 px-9">
