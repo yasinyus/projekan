@@ -269,127 +269,42 @@
                             </div>
                         </div>
                         <div class="separator border-3 my-5"></div>
-                    
-                        <!-- Jaringan Tetap LBCS -->
+
+                        <!-- Jenis Izin Jaringan -->
                         <div class="fv-row mb-10">
                             <!--begin::Label-->
-                            <label class="form-label required">Izin Jaringan Tetap Lokal Berbasis Circuit Switched</label>
+                            <label class="form-label required">Jenis Izin Jaringan Aktif</label>
                             <!--end::Label-->							
                             <!--begin::Select-->
                             <select class="form-select form-select-solid" 
                                 data-control="select2"
-                                data-placeholder="Pilih jaringan tetap lokal berbasis circuit switched" 
+                                data-placeholder="Pilih Jenis Izin Jaringan Aktif" 
                                 data-dropdown-parent="#kt_modal_izin_jartel"
-                                id="jaringanTetapLbcsInput"
-                                name="jaringanTetapLbcs">																
-                                <option value=""></option>																
-                                <option th:each="jenisIzin : ${jenisPerizinanList}"
-                                            th:text="${jenisIzin.description}"
-                                            th:value="${jenisIzin.id}">
-                                    </option>
+                                id="jenisIzinJaringanJasteldasInput"
+                                name="jenisIzinJaringanJasteldas">																
+                                <option value=""></option>                                
                             </select>
                             <!--end::Select-->
                         </div>
-                        <!-- Jaringan Tetap SLJJ -->
+                        <!--Jenis Izin Jaringan -->
+
+                        <!-- Nomor Izin Jaringan -->
                         <div class="fv-row mb-10">
                             <!--begin::Label-->
-                            <label class="form-label required">Izin Jaringan Tetap Sambungan Langsung Jarak Jauh</label>
+                            <label class="form-label required">Nomor Izin Jaringan Aktif</label>
                             <!--end::Label-->							
                             <!--begin::Select-->
                             <select class="form-select form-select-solid" 
                                 data-control="select2"
-                                data-placeholder="Pilih jaringan tetap sambungan langsung jarak jauh" 
+                                data-placeholder="Pilih Nomor Izin Jaringan Aktif" 
                                 data-dropdown-parent="#kt_modal_izin_jartel"
-                                id="jaringanTetapSljjInput"
-                                name="jaringanTetapSljj">																
-                                <option value=""></option>																
-                                <option th:each="jenisIzin : ${jenisPerizinanList}"
-                                            th:text="${jenisIzin.description}"
-                                            th:value="${jenisIzin.id}">
-                                    </option>
+                                id="nomorIzinJaringanJasteldasInput"
+                                name="nomorIzinJaringanJasteldas">																
+                                <option value=""></option>                                
                             </select>
                             <!--end::Select-->
                         </div>
-                        <!-- Jaringan Tetap SLI -->
-                        <div class="fv-row mb-10">
-                            <!--begin::Label-->
-                            <label class="form-label required">Izin Jaringan Tetap Sambungan Internasional</label>
-                            <!--end::Label-->							
-                            <!--begin::Select-->
-                            <select class="form-select form-select-solid" 
-                                data-control="select2"
-                                data-placeholder="Pilih jaringan tetap sambungan internasional" 
-                                data-dropdown-parent="#kt_modal_izin_jartel"
-                                id="jaringanTetapSliInput"
-                                name="jaringanTetapSli">																
-                                <option value=""></option>																
-                                <option th:each="jenisIzin : ${jenisPerizinanList}"
-                                            th:text="${jenisIzin.description}"
-                                            th:value="${jenisIzin.id}">
-                                    </option>
-                            </select>
-                            <!--end::Select-->
-                        </div>
-                        <!-- Jaringan Bergerak Seluler -->
-                        <div class="fv-row mb-10">
-                            <!--begin::Label-->
-                            <label class="form-label required">Izin Jaringan Bergerak Seluler</label>
-                            <!--end::Label-->							
-                            <!--begin::Select-->
-                            <select class="form-select form-select-solid" 
-                                data-control="select2"
-                                data-placeholder="Pilih jaringan bergerak seluler" 
-                                data-dropdown-parent="#kt_modal_izin_jartel"
-                                id="jaringanBergerakSelulerInput"
-                                name="jaringanBergerakSeluler">																
-                                <option value=""></option>																
-                                <option th:each="jenisIzin : ${jenisPerizinanList}"
-                                            th:text="${jenisIzin.description}"
-                                            th:value="${jenisIzin.id}">
-                                    </option>
-                            </select>
-                            <!--end::Select-->
-                        </div>
-                        <!-- Jaringan Bergerak Satelit -->
-                        <div class="fv-row mb-10">
-                            <!--begin::Label-->
-                            <label class="form-label required">Izin Jaringan Bergerak Satelit</label>
-                            <!--end::Label-->							
-                            <!--begin::Select-->
-                            <select class="form-select form-select-solid" 
-                                data-control="select2"
-                                data-placeholder="Pilih jaringan bergerak satelit" 
-                                data-dropdown-parent="#kt_modal_izin_jasteldas"
-                                id="jaringanBergerakSatelitInput"
-                                name="jaringanBergerakSatelit">																
-                                <option value=""></option>																
-                                <option th:each="jenisIzin : ${jenisPerizinanList}"
-                                            th:text="${jenisIzin.description}"
-                                            th:value="${jenisIzin.id}">
-                                    </option>
-                            </select>
-                            <!--end::Select-->
-                        </div>
-                        <!-- Jaringan Bergerak Terestrial Radio Trunking -->
-                        <div class="fv-row mb-10">
-                            <!--begin::Label-->
-                            <label class="form-label">Izin Jaringan Bergerak Terestrial Radio Trunking</label>
-                            <!--end::Label-->							
-                            <!--begin::Select-->
-                            <select class="form-select form-select-solid" 
-                                data-control="select2"
-                                data-placeholder="Pilih jaringan bergerak terestrial radio trunking" 
-                                data-dropdown-parent="#kt_modal_izin_jasteldas"
-                                id="jaringanBergerakTrtInput"
-                                name="jaringanBergerakTrt">																
-                                <option value=""></option>																
-                                <option th:each="jenisIzin : ${jenisPerizinanList}"
-                                            th:text="${jenisIzin.description}"
-                                            th:value="${jenisIzin.id}">
-                                    </option>
-                            </select>
-                            <!--end::Select-->
-                        </div>
+                        <!--Nomor Izin Jaringan -->                                            
                     </div>
                     <!--end::Step 2 JASTELDAS-->                                                                
 
@@ -483,46 +398,41 @@
                         </div>
                         <div class="separator border-3 my-5"></div>
                                                         
-                        <!-- Jaringan Bergerak Satelit -->
+                        <!-- Jenis Izin Jaringan -->
                         <div class="fv-row mb-10">
                             <!--begin::Label-->
-                            <label class="form-label required">Izin Jaringan Bergerak Satelit</label>
+                            <label class="form-label required">Jenis Izin Jaringan Tertutup Aktif</label>
                             <!--end::Label-->							
                             <!--begin::Select-->
                             <select class="form-select form-select-solid" 
                                 data-control="select2"
-                                data-placeholder="Pilih jaringan bergerak satelit" 
-                                data-dropdown-parent="#kt_modal_izin_jasteldas"
-                                id="jaringanBergerakSatelitInput"
-                                name="jaringanBergerakSatelit">																
-                                <option value=""></option>																
-                                <option th:each="jenisIzin : ${jenisPerizinanList}"
-                                            th:text="${jenisIzin.description}"
-                                            th:value="${jenisIzin.id}">
-                                    </option>
+                                data-placeholder="Pilih Jenis Izin Jaringan Tertutup Aktif" 
+                                data-dropdown-parent="#kt_modal_izin_jartel"
+                                id="jenisIzinJaringanNapInput"
+                                name="jenisIzinJaringanNap">																
+                                <option value=""></option>                                
                             </select>
                             <!--end::Select-->
                         </div>
-                        <!-- Jaringan Bergerak Terestrial Radio Trunking -->
+                        <!--Jenis Izin Jaringan -->
+
+                        <!-- Nomor Izin Jaringan -->
                         <div class="fv-row mb-10">
                             <!--begin::Label-->
-                            <label class="form-label">Izin Jaringan Bergerak Terestrial Radio Trunking</label>
+                            <label class="form-label required">Nomor Izin Jaringan Tertutup Aktif</label>
                             <!--end::Label-->							
                             <!--begin::Select-->
                             <select class="form-select form-select-solid" 
                                 data-control="select2"
-                                data-placeholder="Pilih jaringan bergerak terestrial radio trunking" 
-                                data-dropdown-parent="#kt_modal_izin_jasteldas"
-                                id="jaringanBergerakTrtInput"
-                                name="jaringanBergerakTrt">																
-                                <option value=""></option>																
-                                <option th:each="jenisIzin : ${jenisPerizinanList}"
-                                            th:text="${jenisIzin.description}"
-                                            th:value="${jenisIzin.id}">
-                                    </option>
+                                data-placeholder="Pilih Nomor Izin Jaringan Tertutup Aktif" 
+                                data-dropdown-parent="#kt_modal_izin_jartel"
+                                id="nomorIzinJaringanNapInput"
+                                name="nomorIzinJaringanNap">																
+                                <option value=""></option>                                
                             </select>
                             <!--end::Select-->
                         </div>
+                        <!--Nomor Izin Jaringan -->   
                     </div>
                     <!--end::Step 3 NAP-->                                                                
 

@@ -29,7 +29,7 @@ var FormIzinJartel = function () {
 			persetujuan: false
 		}
 	var kodeIzinList = [];
-	var jenisPerizinan;
+	var jenisJasa = '';
 
 	// Private Functions
 	var initStepper = function () {
@@ -44,28 +44,26 @@ var FormIzinJartel = function () {
 				hide(submitBtn);
 				show(nextBtn);
 			}
-			// if (stepper.getCurrentStepIndex() == 3) {
-			// 	hide(modalEl.querySelector("#formTitle"));		
-			// } else {
-			// 	show(modalEl.querySelector("#formTitle"));
-			// }
 		});
 
 		// Validation before going to next page
 		stepper.on('kt.stepper.next', function (stepper) {
 			// Validate form before change stepper step
 			var currentStep = stepper.getCurrentStepIndex();
-			var validator = validations[currentStep - 1]; 			
+			var validator = validations[currentStep - 1];
 			if (validator) {
 				validator.validate().then(function (status) {
 					if (status == 'Valid') {
-						console.log(status)
 						nextStepFillData();
 						if(currentStep == 1) {
 							if((currentData.kbli =='61200' || currentData.kbli == '61100') && currentData.kodeIzinBaruText == '59000000051') {
-								stepper.goTo(2);
-							} else if(currentData.kbli =='61924') {			
-								stepper.goTo(3);																			
+								stepper.goTo(2);								
+								reloadJenisIzinJaringanAktif();
+								jenisJasa = 'JASTELDAS';
+							} else if(currentData.kbli =='61924') {
+								stepper.goTo(3);
+								reloadJenisIzinJaringanAktifTertutup();
+								jenisJasa = 'NAP';
 							} else {
 								stepper.goTo(4);
 							}
@@ -87,13 +85,15 @@ var FormIzinJartel = function () {
 			if(stepper.getCurrentStepIndex() == 4) {
 				if((currentData.kbli =='61200' || currentData.kbli == '61100') && currentData.kodeIzinBaruText == '59000000051') {
 					stepper.goTo(2);
-				} else if(currentData.kbli=='61924') {			
+				} else if(currentData.kbli=='61924') {
 					stepper.goTo(3);
 				} else{
 					stepper.goTo(1);
+					jenisJasa = '';
 				}
 			} else if(stepper.getCurrentStepIndex() == 3 || stepper.getCurrentStepIndex() == 2){
 				stepper.goTo(1);
+				jenisJasa = '';
 			} else {
 				stepper.goPrevious();
 			}
@@ -153,12 +153,11 @@ var FormIzinJartel = function () {
 		});
 		
 		$("#jenisPerizinanInput").on("change", function(e) {
-			jenisPerizinan = $("#jenisPerizinanInput option:selected").val();
 			$("#kodeIzinBaruInput").val(null).trigger("change");
 			$("#kbliInput").val('');
 			$("#jenisPenyelenggaraanInput").val('');
 			$("#mediaTransmisiInput").val('');
-		});
+		});		
 		
 		$("#kodeIzinBaruInput").select2({
 			placeholder: "Kode Izin Baru",
@@ -203,6 +202,80 @@ var FormIzinJartel = function () {
 				$('#mediaTransmisiInput').val(valueData.mediaTransmisi);
 			}			
 		});
+		
+		$("#jenisIzinJaringanJasteldasInput").on("select2:select", function(e) {			
+			var kib_id_aktif = $("#jenisIzinJaringanJasteldasInput option:selected").val();
+			if(kib_id_aktif) {
+				reloadNomorIzinJaringanAktif(kib_id_aktif);
+			}			
+		});
+
+		$("#jenisIzinJaringanNapInput").on("select2:select", function(e) {			
+			var kib_id_aktif = $("#jenisIzinJaringanNapInput option:selected").val();
+			if(kib_id_aktif) {
+				reloadNomorIzinJaringanNapAktif(kib_id_aktif);
+			}			
+		});
+	}
+
+	var reloadJenisIzinJaringanAktif = function () {
+		var jenisIzin = $('#jenisIzinJaringanJasteldasInput');
+		$('#jenisIzinJaringanJasteldasInput').empty().trigger("change");
+		$.ajax({
+			type: 'GET',
+			url: "/master/nama-izin/jaringan/" + currentData.kbli,
+		}).then(function (data) {
+			data.forEach(item => {
+				var option = new Option(item.nama_izin, item.id, true, true);
+				jenisIzin.append(option).trigger('change');
+			});
+			$('#jenisIzinJaringanJasteldasInput').val(null).trigger("change");
+		});	
+	}
+
+	var reloadNomorIzinJaringanAktif = function (kib_id_aktif) {
+		$('#nomorIzinJaringanJasteldasInput').empty().trigger("change");
+		var nomorIzinAktif = $('#nomorIzinJaringanJasteldasInput');
+		$.ajax({
+			type: 'GET',
+			url: "/perizinan/aktif/" + kib_id_aktif,
+		}).then(function (data) {
+			data.forEach(item => {
+				var option = new Option(item.nomor_izin, item.id, true, true);
+				nomorIzinAktif.append(option).trigger('change');
+			});
+			$("#nomorIzinJaringanJasteldasInput").val(null).trigger("change");
+		});	
+	}
+
+	var reloadJenisIzinJaringanAktifTertutup = function () {
+		var jenisIzin = $('#jenisIzinJaringanNapInput');
+		$('#jenisIzinJaringanNapInput').empty().trigger("change");
+		$.ajax({
+			type: 'GET',
+			url: "/master/nama-izin/jaringan-tertutup",
+		}).then(function (data) {
+			data.forEach(item => {
+				var option = new Option(item.nama_izin, item.id, true, true);
+				jenisIzin.append(option).trigger('change');
+			});
+			$('#jenisIzinJaringanNapInput').val(null).trigger("change");
+		});	
+	}
+
+	var reloadNomorIzinJaringanNapAktif = function (kib_id_aktif) {
+		$('#nomorIzinJaringanNapInput').empty().trigger("change");
+		var nomorIzinAktif = $('#nomorIzinJaringanNapInput');
+		$.ajax({
+			type: 'GET',
+			url: "/perizinan/aktif/" + kib_id_aktif,
+		}).then(function (data) {
+			data.forEach(item => {
+				var option = new Option(item.nomor_izin, item.id, true, true);
+				nomorIzinAktif.append(option).trigger('change');
+			});
+			$("#nomorIzinJaringanNapInput").val(null).trigger("change");
+		});	
 	}
 
 	var initValidation = function () {
@@ -256,6 +329,20 @@ var FormIzinJartel = function () {
 			form,
 			{
 				fields: {
+					jenisIzinJaringanJasteldas: {
+						validators: {
+							notEmpty: {
+								message: 'Jenis Jaringan Jaringan Aktif harus diisi'
+							}
+						}
+					},
+					nomorIzinJaringanJasteldas: {
+						validators: {
+							notEmpty: {
+								message: 'Nomor Jaringan Jaringan Aktif harus diisi'
+							}
+						}
+					}	
 				},
 				plugins: {
 					trigger: new FormValidation.plugins.Trigger(),
@@ -326,6 +413,10 @@ var FormIzinJartel = function () {
 	var resetForm = () => {
 		$("#jenisPerizinanInput").val(null).trigger("change");
 		$("#kodeIzinBaruInput").val(null).trigger("change");
+		$('#jenisIzinJaringanJasteldasInput').empty().trigger("change");
+		$('#nomorIzinJaringanJasteldasInput').empty().trigger("change");
+		$('#jenisIzinJaringanJasteldasInput').val(null).trigger("change");
+		$('#nomorIzinJaringanJasteldasInput').val(null).trigger("change");
 		form.reset();
 		stepper.goTo(1);
 	}
@@ -385,11 +476,18 @@ var FormIzinJartel = function () {
 
 	//API Call
 	var processApplication = function () {
-        currentData.mediaTransmisi = $('#mediaTransmisiInput').val(); 
+		currentData.mediaTransmisi = $('#mediaTransmisiInput').val();
+		var referensi_nomor_izin = '';
+		if(jenisJasa == 'JASTELDAS') {
+			referensi_nomor_izin = $("#nomorIzinJaringanJasteldasInput option:selected").text();
+		}else if(jenisJasa == 'NAP') {
+			referensi_nomor_izin = $("#nomorIzinJaringanNapInput option:selected").text();
+		}
         var requestBody = {
     		 username: null,
              tanggal_pengajuan: $('#tanggalPengajuanInput').val(),             
-			 kode_izin_id: $('#kodeIzinBaruInput').val()
+			 kode_izin_id: $('#kodeIzinBaruInput').val(),
+			 referensi_nomor_izin: referensi_nomor_izin
         };
         
         $.ajax({

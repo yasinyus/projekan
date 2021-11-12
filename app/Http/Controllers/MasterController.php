@@ -19,4 +19,16 @@ class MasterController extends Controller
         }
         
     }
+
+    public function getNamaIzinJaringanByKbli(Request $request, $kbli) {
+        return KodeIzin::select('id', 'nama_izin')
+            ->where(['jenis_izin_id' => 2, 'kbli' => $kbli])->get();
+    }
+
+    public function getNamaIzinJaringanTertutup(Request $request) {        
+        return KodeIzin::select('id', 'nama_izin')
+            ->where(['jenis_izin_id' => 2])
+            ->whereRaw('lower(nama_izin) like (?)',["%tertutup%"])
+            ->get();
+    }
 }
