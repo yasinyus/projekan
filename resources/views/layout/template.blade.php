@@ -55,6 +55,7 @@
                                 </ul>
                             </div>
                         </div>
+                    </div>
                         
                         <!--end::Toolbar-->
                         <!--begin::Post-->
