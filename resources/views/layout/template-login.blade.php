@@ -28,7 +28,7 @@
             <div class="page d-flex flex-row flex-column-fluid">
                 <!--begin::Wrapper-->
                 <div class="flex-column flex-row-fluid" id="kt_wrapper">
-                    @include('layout.menu');
+                    @include('layout.menu-login');
                     <!--begin::Content-->
                     <div class="content d-flex flex-column flex-column-fluid" id="kt_content">
                         <!--<div class="toolbar" id="kt_toolbar" th:if="${#authentication.principal == 'anonymousUser'}">
