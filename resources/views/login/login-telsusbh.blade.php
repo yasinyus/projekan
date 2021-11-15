@@ -11,11 +11,12 @@
         </div>
         <div class="card-body p-9">
                 <form class="form w-100" id="kt_sign_in_form" action="registrasi-telsusbh-person/" method="post">
+                    @csrf <!-- {{ csrf_field() }} -->
                     <div class="fv-row mb-5">
                         <label class="form-label fs-6 fw-bolder text-dark">Alamat Email</label>
                         <input class="form-control form-control-lg form-control" type="email" placeholder="Masukan Alamat Email" id="email" name="email" autocomplete="off" required/>
                     </div>
-                    <div class="mb-5 fv-row" data-kt-password-meter="true">
+                    <div class="mb-5 fv-row">
                         <div class="mb-1">
                             <label class="form-label fw-bolder text-dark fs-6">Password</label>
                             <div class="position-relative mb-3">
@@ -47,6 +48,7 @@
         </div>
     </div>
 </div>
+
 <script>
     $("#kt_sign_in_submit").click(function(){
         if($("#email").val()=="" && $("#password").val()==""){
@@ -58,8 +60,13 @@
         }else if($("#password").val()==""){
             event.preventDefault();
             swal("Peringatan!", "Mohon isi password anda", "warning");
+        }else if(grecaptcha.getResponse()==""){
+            event.preventDefault();
+            swal("Peringatan!", "Mohon isi captcha!", "warning");
+        }else{
+            event.preventDefault();
+            window.location.href = 'registrasi-telsusbh-person';
         }
     });
-        
 </script>
 @endsection

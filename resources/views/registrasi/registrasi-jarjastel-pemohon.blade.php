@@ -10,37 +10,37 @@
         <div class="card-body p-9">
             <div class="fv-row mb-7">
                 <label class="form-label fw-bolder text-dark fs-6">Nama Pemohon*</label>
-                <input class="form-control form-control-lg form-control" type="text" placeholder="Masukan Nama Lengkap" name="name" required autocomplete="off" />
+                <input class="form-control form-control-lg form-control" type="text" placeholder="Masukan Nama Lengkap" id="name" name="name" required autocomplete="off" />
                 <div class="text-muted">Nama Pemohon adalah nama penerima kuasa untuk mengurus izin. Jika pemohon adalah Direktur Perusahaan, maka nama pemohon adalah nama Direktur.</div>
             </div>
             <div class="fv-row mb-7">
                 <label class="form-label fw-bolder text-dark fs-6">Email Pemohon*</label>
-                <input class="form-control form-control-lg form-control-solid" type="email" placeholder="Masukan Alamat Email" name="email" required autocomplete="off" />
+                <input class="form-control form-control-lg form-control" type="email" placeholder="Masukan Alamat Email" id="email" name="email" required autocomplete="off" />
                 <div class="text-muted">Pastikan alamat email yang Anda masukkan sudah benar. SK izin yang telah diterbitkan akan dikirimkan melalui alamat email diatas. Email permohon adalah email yang diberikan kuasa, dan jika pemohon adalah seorang direktur, maka email pemohon adalah email direktur. Email juga digunakan untuk login ke dalam sistem</div>
             </div>
             <div class="fv-row mb-7">
                 <label class="form-label fw-bolder text-dark fs-6">Nomor Telepon/Handphone Pemohon*</label>
-                <input class="form-control form-control-lg form-control-solid" type="text" placeholder="" name="phone" autocomplete="off" />
+                <input class="form-control form-control-lg form-control" type="text" placeholder="" id="phone" name="phone" autocomplete="off" re/>
             </div>
             <div class="row mb-4">
                 <div class="col-xl-6 fv-row">
                         <label class="form-label fw-bolder text-dark fs-6">Nomor KTP Pemohon*</label>
-                        <input class="form-control form-control-lg form-control" type="text" placeholder="" name="nik" autocomplete="off" />
+                        <input class="form-control form-control-lg form-control" type="text" placeholder="" id="nik" name="nik" autocomplete="off" />
                 </div>
                 <div class="col-xl-6 fv-row">
                         <label class="form-label fw-bolder text-dark fs-6">Upload KTP Pemohon*</label>
-                        <input class="form-control form-control-lg form-control" type="file" placeholder="" name="nik_up" autocomplete="off" accept="application/pdf"/>
+                        <input class="form-control form-control-lg form-control" type="file" placeholder="" id="nik_file" name="nik_file" autocomplete="off" accept="application/pdf"/>
                 </div>
                 
                 <div class="text-muted">KTP Pemohon adalah KTP penerima kuasa untuk mengurus izin. Jika pemohon adalah Direktur Perusahaan, maka KTP pemohon adalah KTP Direktur.</div>
             </div>
             <div class="fv-row mb-7">
                 <label class="form-label fw-bolder text-dark fs-6">Jabatan*</label>
-                <input class="form-control form-control-lg form-control-solid" type="text" placeholder="" name="jabatan" autocomplete="off" />
+                <input class="form-control form-control-lg form-control" type="text" placeholder="" id="=jabatan" name="jabatan" autocomplete="off" />
             </div>
             <div class="fv-row mb-7">
                 <label class="form-label fw-bolder text-dark fs-6">Kartu Pegawai/Surat Keterangan Bekerja*</label>
-                <input class="form-control form-control-lg form-control-solid" type="file" placeholder="" name="kartu" autocomplete="off" accept="application/pdf"/>
+                <input class="form-control form-control-lg form-control-solid" type="file" placeholder="" id="kartu" name="kartu" autocomplete="off" accept="application/pdf"/>
             </div>
             <hr>
             <div class="fv-row mb-7">
@@ -58,7 +58,7 @@
         </div>
         <div class="card-footer d-flex justify-content-end py-6 px-9">
             <button type="reset" class="btn btn-light btn-active-light-primary me-2">Kembali</button>
-            <button type="submit" class="btn btn-secondary" id="kt_registrasi_submit">Submit</button>
+            <button type="submit" class="btn btn-primary" id="kt_registrasi_submit">Submit</button>
         </div>
     </form>
 </div>
@@ -74,6 +74,21 @@
             $('#kt_registrasi_submit').removeClass('btn-primary');
             $('#kt_registrasi_submit').addClass('btn-secondary');
 
+        }
+    });
+
+    $("#kt_registrasi_submit").click(function(){
+        var nik_file = document.getElementById("nik_file").files.length;
+        var kartu = document.getElementById("kartu").files.length;
+        if($('#ceksyarat').is(':checked')==false || $("#name").val()=="" || $("#email").val()=="" || $("#phone").val()=="" || $("#nik").val()=="" || $("#nik_file").val()==0 || $("#kartu").val()==0){
+            event.preventDefault();
+            swal("Peringatan!", "Mohon isi semua data!", "warning");
+        }else if(grecaptcha.getResponse()==""){
+            event.preventDefault();
+            swal("Peringatan!", "Mohon isi Captcha!", "warning");
+        }else{
+            // event.preventDefault();
+            // window.location.href = 'registrasi-jarjastel-person';
         }
     });
     // $('#npwp').change(function () {

@@ -91,7 +91,8 @@
         </div>
         <div class="card-footer d-flex justify-content-end py-6 px-9">
             <button type="reset" class="btn btn-light btn-active-light-primary me-2">Kembali</button>
-            <button type="submit" class="btn btn-primary" id="kt_project_settings_submit">Submit</button>
+            {{-- <button type="submit" class="btn btn-primary" id="kt_project_settings_submit">Submit</button> --}}
+            <a href="registrasi-telsusbh-perusahaan" class="btn btn-primary" id="kt_project_settings_submit">Submit</a>
         </div>
     </form>
 </div>

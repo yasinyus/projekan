@@ -12,11 +12,12 @@
         <div class="card-body p-9">
             {{-- <div class="w-lg-500px bg-body rounded shadow-sm p-10 p-lg-15 mx-auto"> --}}
                 <form class="form w-100"  id="kt_sign_in_form" action="registrasi-jarjastel-person/" method="post">
+                    @csrf <!-- {{ csrf_field() }} -->
                     <div class="fv-row mb-5">
                         <label class="form-label fs-6 fw-bolder text-dark">Alamat Email</label>
                         <input class="form-control form-control-lg form-control" type="email" placeholder="Masukan Alamat Email" id="email" name="email" autocomplete="off" required />
                     </div>
-                    <div class="mb-5 fv-row" data-kt-password-meter="true">
+                    <div class="mb-5 fv-row">
                         <div class="mb-5">
                             <label class="form-label fw-bolder text-dark fs-6">Password</label>
                             <div class="position-relative mb-3">
@@ -51,16 +52,36 @@
     </div>
 </div>
 <script>
+    function recaptchaCallback() {
+        if($("#email").val()!="" && $("#password").val()!=""){
+            $('#kt_sign_in_submit').removeAttr('disabled');
+        }else{
+            recaptchachecked = false;
+        }
+    };
+
     $("#kt_sign_in_submit").click(function(){
+        // if(g-recaptcha.getResponse() == "") {
+        //         e.preventDefault();
+        //         alert("You can't proceed!");
+        //     } else {
+        //         alert("Thank you");
+        //     }
         if($("#email").val()=="" && $("#password").val()==""){
             event.preventDefault();
-            swal("Peringatan!", "Mohon isi alamat email dan password", "warning");
+            swal("Peringatan!", "Mohon isi alamat email dan password!", "warning");
         }else if($("#email").val()==""){
             event.preventDefault();
-            swal("Peringatan!", "Mohon isi alamat email anda", "warning");
+            swal("Peringatan!", "Mohon isi alamat email anda!", "warning");
         }else if($("#password").val()==""){
             event.preventDefault();
-            swal("Peringatan!", "Mohon isi password anda", "warning");
+            swal("Peringatan!", "Mohon isi password anda!", "warning");
+        }else if(grecaptcha.getResponse()==""){
+            event.preventDefault();
+            swal("Peringatan!", "Mohon isi captcha!", "warning");
+        }else{
+            event.preventDefault();
+            window.location.href = 'registrasi-jarjastel-person';
         }
     });
         
