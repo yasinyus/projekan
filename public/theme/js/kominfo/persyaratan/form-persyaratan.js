@@ -12,7 +12,7 @@ var FormPersyaratan = function () {
 	var initForm = () => {
 		goToDashboardButton.addEventListener('click', function (e) {
             e.preventDefault();
-            window.location.href= window.location.origin + "/dashboard/jaringan-telekomunikasi";
+            window.location.href= window.location.origin + "/dashboard";
         })
 		
 	}
@@ -43,7 +43,7 @@ var FormPersyaratan = function () {
     	        }
     	    }).then((result) => {
 	    	  if (result.isConfirmed) {
-	    		  window.location.href= window.location.origin + "/dashboard/jaringan-telekomunikasi";
+	    		  window.location.href= window.location.origin + "/dashboard";
     		  }
     		});
         })

@@ -56,7 +56,7 @@
                 </div>
                 <!--begin::Actions-->
                 <div class="d-flex flex-center flex-row-fluid pt-12">
-                    <button type="reset" class="btn btn-purple" data-bs-dismiss="modal">OK</button>							
+                    <button id="modal-summary-perizinan" type="button" class="btn btn-purple" data-bs-dismiss="modal">OK</button>							
                 </div>
                 <!--end::Actions-->					
             </div>

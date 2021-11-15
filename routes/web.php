@@ -5,6 +5,7 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\MasterController;
 use App\Http\Controllers\PerizinanController;
 use App\Http\Controllers\PersyaratanController;
+use App\Http\Controllers\Sendemail;
 
 /*
 |--------------------------------------------------------------------------
@@ -133,3 +134,4 @@ Route::get('/perizinan/dalam-proses', [PerizinanController::class, 'dalamProses'
 Route::get('/perizinan/aktif/{kib_id}', [PerizinanController::class, 'getPerizinanAktifByKibId']);
 Route::post('/perizinan/daftar', [PerizinanController::class, 'daftar']);
 Route::get('/persyaratan/{perizinanId}', [PersyaratanController::class, 'persyaratan']);
+Route::post('/email-daftar-perizinan', [Sendemail::class, 'email_daftar_perizinan']);

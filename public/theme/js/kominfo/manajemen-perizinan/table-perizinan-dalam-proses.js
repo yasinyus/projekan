@@ -108,21 +108,21 @@ var KTTablePerizinanDalamProses = function () {
                     headers: {"X-CSRF-TOKEN": $("meta[name='_csrf']").attr("content")},                    
                     success: function (data) {
                         if(data == "penomoran") {
-                        	enablePenomoran();
-                        	disableUlo();
+                        	// enablePenomoran();
+                        	// disableUlo();
                         } else if(data=="ulo") {
-                        	enablePenomoran();
-                        	enableUlo();
+                        	// enablePenomoran();
+                        	// enableUlo();
                         } else {
-                        	enablePersyaratan();
-                        	disablePenomoran();
-                        	disableUlo();
+                        	// enablePersyaratan();
+                        	// disablePenomoran();
+                        	// disableUlo();
                         }
                     },
                     error: function(error) {
-                        enablePersyaratan();
-                        enablePenomoran();
-                        enableUlo();
+                        // enablePersyaratan();
+                        // enablePenomoran();
+                        // enableUlo();
                     }
                 });
             })

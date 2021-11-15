@@ -20,8 +20,7 @@ class PerizinanController extends Controller
         $perizinan->save();
     }
 
-    public function dalamProses(Request $request) {
-        DB::enableQueryLog();
+    public function dalamProses(Request $request) {        
         $offset = $request->input('start');
         $limit = $request->input('length');
         $query = Perizinan::select('perizinan.id', 'jenis_izin.deskripsi AS jenis_izin', 
@@ -44,5 +43,5 @@ class PerizinanController extends Controller
             ->where(['kib_id' => $kib_id]) 
             //todo where userId = $userId &status = active & tanggal_izin >= 5 thn
             ->get();
-    }
+    }    
 }

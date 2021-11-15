@@ -114,4 +114,15 @@ class Sendemail extends BaseController
         return redirect('/login-jarjastel');
     }
        
+    public function email_daftar_perizinan(Request $request){
+        //todo, get email from database by applicant id
+        $to_email = 'titus.nainggolan@gmail.com';
+        $data = array("email" => $to_email);
+        Mail::send('perizinan.email-perizinan', $data, function($message) use ($to_email) {
+            $message->to($to_email)
+            ->subject('Siap Kominfo - KONFIRMASI KODE IZIN BARU (OSS RBA)');
+            $message->from('devtesting.ryan@gmail.com','Siap - Kominfo');
+        });
+        return "success";
+    }
 }

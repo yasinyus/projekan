@@ -101,30 +101,33 @@
     <!--end::Card Informasi & Status Permohonan-->
     
     <!-- begin::Penyelenggaraan Jaringan Tetap Tertutup -->
-    @include('persyaratan.form-kplt-jartup-terestrial')
-    
-    @include('persyaratan.form-kplt-jartup-skkl')		
-    
-    @include('persyaratan.form-kplt-jartup-microwave')
-    
-    @include('persyaratan.form-kplt-jartup-satelit')
-
-    @include('persyaratan.form-kplt-jartup-vsat')
+    @if ($perizinan->kode_izin === '59000000034')  
+        @include('persyaratan.form-kplt-jartup-terestrial')
+    @elseif ($perizinan->kode_izin === '59000000040')
+        @include('persyaratan.form-kplt-jartup-skkl')
+    @elseif ($perizinan->kode_izin === '59000000062')
+        @include('persyaratan.form-kplt-jartup-microwave')
+    @elseif ($perizinan->kode_izin === '59000000035')
+        @include('persyaratan.form-kplt-jartup-satelit')
+    @elseif ($perizinan->kode_izin === '59000000045')
+        @include('persyaratan.form-kplt-jartup-vsat')
     <!--end::Penyelenggaraan Jaringan Tetap Tertutup -->
-    
-    <!--begin::Penyelenggaraan Jaringan Tetap Lokal Berbasis Packet Switched -->
-    @include('persyaratan.form-kplt-jartap-lbps')
-    <!--end::Penyelenggaraan Jaringan Tetap Lokal Berbasis Packet Switched -->
-    
-    <!--begin::Penyelenggaraan Jaringan Bergerak Terestrial Radio Trunking -->
-    @include('persyaratan.form-kplt-pjb-trt')
-    <!--end::Penyelenggaraan Jaringan Bergerak Terestrial Radio Trunking-->
-    
-    <!--begin::Penyelenggaraan Jaringan Bergerak Satelit -->
-    @include('persyaratan.form-kplt-pjb-satelit')
-    <!--end::Penyelenggaraan Jaringan Bergerak Satelit-->
-    
-        
+    @elseif ($perizinan->kode_izin === '59000000042')
+        <!--begin::Penyelenggaraan Jaringan Tetap Lokal Berbasis Packet Switched -->
+        @include('persyaratan.form-kplt-jartap-lbps')
+        <!--end::Penyelenggaraan Jaringan Tetap Lokal Berbasis Packet Switched -->
+    @elseif ($perizinan->kode_izin === '59000000065')
+        <!--begin::Penyelenggaraan Jaringan Bergerak Terestrial Radio Trunking -->
+        @include('persyaratan.form-kplt-pjb-trt')
+        <!--end::Penyelenggaraan Jaringan Bergerak Terestrial Radio Trunking-->
+    @elseif ($perizinan->kode_izin === '59000000046')
+        <!--begin::Penyelenggaraan Jaringan Bergerak Satelit -->
+        @include('persyaratan.form-kplt-pjb-satelit')
+        <!--end::Penyelenggaraan Jaringan Bergerak Satelit-->
+    @else
+        <!--No Form -->
+    @endif
+            
     <!--begin::Komitmen Kinerja Layanan -->
     @include('persyaratan.form-komitmen-kinerja')
     <!--end::Komitmen Kinerja Layanan-->
@@ -132,20 +135,17 @@
     <!--begin::Formulir Data Alat/Teknis-->
     @include('persyaratan.form-data-alat-teknis')
     <!--end::Formulir Data Alat/Teknis-->		
-    
-    <!--begin::Document Upload-->
-    @include('persyaratan.form-dokumen-nbh')
-    <!--end::Document Upload-->
-
-    <!--begin::Document Upload Badan Hukum-->
-	@include('persyaratan.form-dokumen-bh')
-	<!--end::Document Upload Badan Hukum-->
-
-</div>
-	
-	
-	
-	
+        
+    @if ($perizinan->badan_hukum)  
+        <!--begin::Document Upload Badan Hukum-->
+        @include('persyaratan.form-dokumen-bh')
+        <!--end::Document Upload Badan Hukum-->
+    @else
+        <!--begin::Document Upload-->
+        @include('persyaratan.form-dokumen-nbh')
+        <!--end::Document Upload-->
+    @endif
+</div>				
 	
 	<!--begin::Modal Confirmation-->	
 	@include('persyaratan.modal-konfirmasi')

@@ -474,6 +474,21 @@ var FormIzinJartel = function () {
 		$("#kt_modal_sumary").modal('show');
 	}
 
+	var sendEmailHandler = function () {
+		var okButton = document.querySelector('#modal-summary-perizinan');
+		okButton.addEventListener('click', function(e) {
+			e.preventDefault();
+			$.ajax({
+				url: "/email-daftar-perizinan",
+				type: "post",
+				headers: {"X-CSRF-TOKEN": $("meta[name='csrf-token']").attr("content")},
+				success: function(data) {
+					
+				}
+			});
+		});
+	}
+
 	//API Call
 	var processApplication = function () {
 		currentData.mediaTransmisi = $('#mediaTransmisiInput').val();
@@ -537,6 +552,7 @@ var FormIzinJartel = function () {
 			initForm();
 			initValidation();
 			initData();
+			sendEmailHandler();
 		}
 	};
 }();

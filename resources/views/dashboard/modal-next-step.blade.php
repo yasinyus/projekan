@@ -25,8 +25,8 @@
                                 <!--begin::Option-->
                                 <input type="radio" class="btn-check" name="next_form" value="persyaratan" checked="checked" 
                                     id="next_form_persyaratan" />
-                                <label id="persyaratan-label" class="btn btn-icon-success btn-outline btn-outline-dashed btn-outline-info h-100px 
-                                        btn-active-light-success p-7 d-flex align-items-center mb-10" 
+                                <label id="persyaratan-label" class="btn btn-circle btn-icon-white btn-info h-100px 
+                                         p-7 d-flex align-items-center mb-10" 
                                     for="next_form_persyaratan">
                                     <!--begin::Svg Icon | path: assets/media/icons/duotune/general/gen005.svg-->
                                         <span class="svg-icon svg-icon svg-icon-3x me=5"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
@@ -37,7 +37,7 @@
                                         <!--end::Svg Icon-->
                                     <!--begin::Info-->
                                     <span class="d-block fw-bold text-start">
-                                        <span id="persyaratan-text" class="text-success fw-bolder d-block fs-4 mb-2">Pemenuhan Persyaratan</span>
+                                        <span id="persyaratan-text" class="text-white fw-bolder d-block fs-4 mb-2">Pemenuhan Persyaratan</span>
                                     </span>
                                     <!--end::Info-->
                                 </label>
@@ -49,8 +49,8 @@
                                 <!--begin::Option-->
                                 <input type="radio" class="btn-check" name="next_form" value="penomoran" 
                                     id="next_form_penomoran" disabled="disabled"/>
-                                <label id="penomoran-label" class="btn btn-icon-info btn-outline btn-outline-dashed btn-outline-info h-100px
-                                        btn-active-light-info p-7 d-flex align-items-center mb-10" 
+                                <label id="penomoran-label" class="btn btn-icon-white btn-info h-100px
+                                        p-7 d-flex align-items-center mb-10" 
                                     for="next_form_penomoran">
                                     <!--begin::Svg Icon | path: assets/media/icons/duotune/general/gen055.svg-->
                                         <span class="svg-icon svg-icon-3x me-5"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
@@ -61,7 +61,7 @@
                                     <!--end::Svg Icon-->
                                     <!--begin::Info-->
                                     <span class="d-block fw-bold text-start">
-                                        <span id="penomoran-text" class="text-info fw-bolder d-block fs-4 mb-2">Penomoran</span>								
+                                        <span id="penomoran-text" class="text-white fw-bolder d-block fs-4 mb-2">Penomoran</span>								
                                     </span>
                                     <!--end::Info-->
                                 </label>
@@ -73,8 +73,8 @@
                                 <!--begin::Option-->
                                 <input type="radio" class="btn-check" name="next_form" value="ulo" 
                                     id="next_form_ulo" disabled="disabled"/>
-                                <label id="ulo-label" class="btn btn-icon-info btn-outline btn-outline-dashed btn-outline-info h-100px
-                                        btn-active-light-info p-7 d-flex align-items-center mb-10" 
+                                <label id="ulo-label" class="btn btn-circle btn-icon-white btn-info h-100px
+                                        p-7 d-flex align-items-center mb-10" 
                                     for="next_form_ulo">
                                     <!--begin::Svg Icon | path: assets/media/icons/duotune/electronics/elc007.svg-->
                                         <span class="svg-icon svg-icon-3x me-5"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
@@ -86,7 +86,7 @@
                                     <!--end::Svg Icon-->
                                     <!--begin::Info-->
                                     <span class="d-block fw-bold text-start">
-                                        <span id="ulo-text" class="text-info fw-bolder d-block fs-4 mb-2">Uji Laik Operasi</span>								
+                                        <span id="ulo-text" class="text-white fw-bolder d-block fs-4 mb-2">Uji Laik Operasi</span>								
                                     </span>
                                     <!--end::Info-->
                                 </label>

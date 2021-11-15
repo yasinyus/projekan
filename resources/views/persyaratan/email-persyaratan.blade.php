@@ -45,48 +45,15 @@
                 <div style="text-align:left; margin: 0 20px; padding: 40px; background-color:#ffffff; border-radius: 6px">
                     <!--begin:Email content-->                    
                     <div style="font-size: 16px;">
-                        <span>Kepada Yth,</span>
+                        <span>Yth. Pimpinan, </span>
                     </div>
                     <div style="padding-bottom: 30px; font-size: 17px;">
                         <span>Nama Perusahaan</span>
                     </div>
-                    <div style="padding-bottom: 30px">
-                    Bersamaan dengan email ini, kami memberitahukan bahwa <b>KODE IZIN BARU</b> dengan nomor 
-                    <b>NOMOR</b> telah berhasil dibuat dengan klasifikasi:
-                    <br><br>
-                   
-                    <b>PERIZINAN BERUSAHA: </b>
-                    <table>
-                        <tr>
-                            <td> NAMA PERUSAHAAN
-                            </td>
-                            <td>
-                            <span>: <b>Nama Perusaahan</b></span>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td> NOMOR INDUK BERUSAHA
-                            </td>
-                            <td>
-                            <span>: <b>NIB</b></span>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td> KBLI
-                            </td>
-                            <td>
-                            <span>: <b>KBLI</b></span>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td> TANGGAL PENGAJUAN KODE IZIN BARU
-                            </td>
-                            <td>
-                            <span>: <b>11 November 2021</b></span>
-                            </td>
-                        </tr>
-                    </table>
-                    
+                    <div style="padding-bottom: 30px">                
+                        <span>Bersamaan dengan email ini, kami memberitahukan bahwa penyampaian dokumen rencana Pemenuhan Persyaratan 
+                        telah kami terima dengan Nomor Permohonan <b>AB0209</b>. 
+                        Silahkan menunggu email berikutnya dari VERIFIKATOR.</span>
                     </div>
                     <div style="padding-bottom: 30px">Demikian disampaikan. Atas perhatiannya diucapkan terima kasih.</div>
                     <div style="border-bottom: 1px solid #eeeeee; margin: 15px 0"></div>
