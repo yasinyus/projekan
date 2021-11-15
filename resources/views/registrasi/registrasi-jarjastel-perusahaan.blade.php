@@ -187,7 +187,7 @@
         // alert(id);
         $('#kota').find('option').not(':first').remove(); 
         $.ajax({
-            url: '{{ url('getKota') }}/'+id,
+            url: 'getKota/'+id,
             type: 'get',
             dataType: 'json',
             success: function(response){
@@ -204,11 +204,15 @@
 
                         var option = "<option value='"+id+"'>"+name+"</option>"; 
                         $("#kota").select2("destroy");
-                        $('#kecamatan').empty().trigger("change");
-                        $('#desa').empty().trigger("change");
-                        $('#kodepos').empty().trigger("change");
                         $("#kota").append(option); 
                         $("#kota").select2();
+                        
+                        $("#kecamatan").select2("destroy");
+                        $("#desa").select2("destroy");
+                        $("#kodepos").select2("destroy");
+                        $("#kecamatan").select2();
+                        $("#desa").select2();
+                        $("#kodepos").select2();
                     }
                 }
             }
@@ -219,7 +223,7 @@
         var id = $(this).val();
         $('#kecamatan').find('option').not(':first').remove(); 
         $.ajax({
-            url: '{{ url('getKecamatan') }}/'+id,
+            url: 'getKecamatan/'+id,
             type: 'get',
             dataType: 'json',
             success: function(response){
@@ -236,11 +240,13 @@
 
                         var option = "<option value='"+id+"'>"+name+"</option>";                 
                         $("#kecamatan").select2("destroy");
-                        $('#desa').empty().trigger("change");
-                        $('#kodepos').empty().trigger("change");
-
                         $("#kecamatan").append(option); 
                         $("#kecamatan").select2();
+
+                        $("#desa").select2("destroy");
+                        $("#kodepos").select2("destroy");
+                        $("#desa").select2();
+                        $("#kodepos").select2();
                     }
                 }
             }
@@ -251,7 +257,7 @@
         var id = $(this).val();
         $('#desa').find('option').not(':first').remove(); 
         $.ajax({
-            url: '{{ url('getDesa') }}/'+id,
+            url: 'getDesa/'+id,
             type: 'get',
             dataType: 'json',
             success: function(response){
@@ -268,10 +274,11 @@
 
                         var option = "<option value='"+id+"'>"+name+"</option>";                 
                         $("#desa").select2("destroy");
-                        $('#kodepos').empty().trigger("change");
-
                         $("#desa").append(option); 
                         $("#desa").select2();
+
+                        $("#kodepos").select2("destroy");
+                        $("#kodepos").select2();
                     }
                 }
             }
@@ -282,7 +289,7 @@
         var id = $(this).val();
         $('#kodepos').find('option').not(':first').remove(); 
         $.ajax({
-            url: '{{ url('getKodepos') }}/'+id,
+            url: 'getKodepos/'+id,
             type: 'get',
             dataType: 'json',
             success: function(response){

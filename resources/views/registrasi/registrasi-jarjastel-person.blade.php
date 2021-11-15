@@ -146,11 +146,15 @@
 
                         var option = "<option value='"+id+"'>"+name+"</option>"; 
                         $("#kota").select2("destroy");
-                        $('#kecamatan').empty().trigger("change");
-                        $('#desa').empty().trigger("change");
-                        $('#kodepos').empty().trigger("change");
                         $("#kota").append(option); 
                         $("#kota").select2();
+                        
+                        $("#kecamatan").select2("destroy");
+                        $("#desa").select2("destroy");
+                        $("#kodepos").select2("destroy");
+                        $("#kecamatan").select2();
+                        $("#desa").select2();
+                        $("#kodepos").select2();
                     }
                 }
             }
@@ -178,11 +182,13 @@
 
                         var option = "<option value='"+id+"'>"+name+"</option>";                 
                         $("#kecamatan").select2("destroy");
-                        $('#desa').empty().trigger("change");
-                        $('#kodepos').empty().trigger("change");
-
                         $("#kecamatan").append(option); 
                         $("#kecamatan").select2();
+
+                        $("#desa").select2("destroy");
+                        $("#kodepos").select2("destroy");
+                        $("#desa").select2();
+                        $("#kodepos").select2();
                     }
                 }
             }
@@ -210,10 +216,11 @@
 
                         var option = "<option value='"+id+"'>"+name+"</option>";                 
                         $("#desa").select2("destroy");
-                        $('#kodepos').empty().trigger("change");
-
                         $("#desa").append(option); 
                         $("#desa").select2();
+
+                        $("#kodepos").select2("destroy");
+                        $("#kodepos").select2();
                     }
                 }
             }

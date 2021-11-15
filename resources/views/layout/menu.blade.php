@@ -6,7 +6,7 @@
         <!--end::Aside mobile toggle-->
         <!--begin::Logo-->
         <div class="d-flex align-items-center flex-grow-1 flex-lg-grow-0 me-lg-15 col-lg-3">
-            <a href="home" style="font-size: 16px;">
+            <a href="/home" style="font-size: 16px;">
                 <img alt="KOMINFO" src="{{asset('theme')}}/media/kominfo/logo_kominfo.png" class="h-50px" />
                 <span class="menu-title text-dark" style="margin-left: 5px;"> KOMINFO</span>
             </a>
@@ -21,7 +21,7 @@
                     <!--begin::Menu-->
                     <div class="menu menu-lg-rounded menu-column menu-lg-row menu-state-bg menu-title-gray-700 menu-state-title-primary menu-state-icon-primary menu-state-bullet-primary menu-arrow-gray-400 fw-bold my-5 my-lg-0 align-items-stretch" id="#kt_header_menu" data-kt-menu="true" style="">
                         <div class="menu-item me-lg-1">
-                            <a id="homeMenu" class="menu-link py-3" href="home">
+                            <a id="homeMenu" class="menu-link py-3" href="/home">
                                 <span class="menu-title text-dark">Home</span>
                             </a>
                         </div>

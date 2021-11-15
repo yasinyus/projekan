@@ -44,7 +44,7 @@
                                         <a href="/dashboard" class="text-white text-hover-primary">Dashboard</a>
                                     </li>
                                     <li class="breadcrumb-item text-white col-lg-3">
-                                        <a href="" class="text-white text-hover-primary">Manajemen Perizinan</a>
+                                        <a href="/riwayat-perizinan" class="text-white text-hover-primary">Manajemen Perizinan</a>
                                     </li>
                                     <li class="breadcrumb-item text-white col-lg-3">
                                         <a href="" class="text-white text-hover-primary">Layanan Informasi</a>
@@ -59,7 +59,7 @@
                         
                         <!--end::Toolbar-->
                         <!--begin::Post-->
-                        <div class="post d-flex flex-column-fluid" id="kt_post">
+                        <div class="post d-flex flex-column-fluid" id="kt_post" style="margin-top: 80px;">
                             <!--begin::Container-->
                             <div id="kt_content_container" class="container-xxl">
                                 <div layout:fragment="content">

@@ -10,7 +10,7 @@
             <div class="card-title fs-3 fw-bolder text-light text-center">REGISTRASI TELEKOMUNIKASI KHUSUS</div>
         </div>
         <div class="card-body p-9">
-            <form class="form w-100" id="kt_sign_up_form" action="{{ action('Sendemail@send_telsusnbh') }}" method="post">
+            <form class="form w-100" id="kt_sign_up_form" action="registrasi-telsusnbh-submit" method="post">
                 @csrf <!-- {{ csrf_field() }} -->
                 <div class="fv-row mb-7">
                     <label class="form-label fw-bolder text-dark fs-6">Kriteria Penyelenggaraan<em style="color: red">*</em></label>
