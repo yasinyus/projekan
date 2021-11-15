@@ -110,7 +110,7 @@
             
             <div class="fv-row mb-7">
                 <label class="form-label fw-bolder text-dark fs-6">Surat Pernyataan (*)</label>
-                <input class="form-control form-control-lg form-control" type="file" placeholder="" name="surat" autocomplete="off"/>
+                <input class="form-control form-control-lg form-control" type="file" placeholder="" name="surat" autocomplete="off" accept="application/pdf"/>
             </div>
             <div class="fv-row mb-7">
                 <div class="text-muted">Dengan ini saya menyatakan bahwa seluruh data yang disampaikan dalam SURAT PERNYATAAN adalah BENAR. Jika dikemudian hari data yang disampaikan terbukti tidak benar, maka kami siap menerima akibat hukum sesuai dengan ketentuan perundang-undangan</div>

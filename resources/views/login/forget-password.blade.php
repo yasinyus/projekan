@@ -11,7 +11,7 @@
                     @csrf <!-- {{ csrf_field() }} -->
                     <div class="fv-row mb-5">
                         <label class="form-label fs-6 fw-bolder text-dark">Alamat Email</label>
-                        <input class="form-control form-control-lg form-control" type="email" placeholder="Masukan Alamat Email" name="email" autocomplete="off" required/>
+                        <input class="form-control form-control-lg form-control" type="email" placeholder="Masukan Alamat Email" id="email" name="email" autocomplete="off" required/>
                     </div>
                     <div class="text-center">
                         <button type="submit" id="kt_forget_password" class="btn btn-lg bg-purple w-100">

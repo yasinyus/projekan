@@ -6,6 +6,7 @@ use App\Http\Controllers\MasterController;
 use App\Http\Controllers\PerizinanController;
 use App\Http\Controllers\PersyaratanController;
 use App\Http\Controllers\Sendemail;
+use App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -39,6 +40,11 @@ Route::post('/konfirmasi-telsusnbh-submit','Sendemail@konfirmasi_telsusnbh')->na
 Route::post('/penomoran-submit','Sendemail@penomoran_submit')->name('penomoran-submit');
 
 Route::post('/forget-password-submit','Sendemail@forget_password')->name('forget-password-submit');
+Route::get('/getKota/{id}', 'KotaController@getKota');
+Route::get('/getKecamatan/{id}', 'KecamatanController@getKecamatan');
+Route::get('/getDesa/{id}', 'DesaController@getDesa');
+Route::get('/getKodepos/{id}', 'KodeposController@getKodepos');
+
 
 Route::get('/konfirmasi-msg', function () {
     return view('emails/konfirmasi-msg');
@@ -62,15 +68,18 @@ Route::get('/login-jarjastel', function () {
     return view('login/login-jarjastel');
 });
 
-Route::get('/registrasi-jarjastel-person', function () {
-    return view('registrasi/registrasi-jarjastel-person');
+Route::match(array('GET', 'POST'), '/registrasi-jarjastel-person', function(){
+    $provinsi = DB::table('provinsi')->get();
+    return view('registrasi/registrasi-jarjastel-person',['provinsi' => $provinsi]);
 });
 
-Route::get('/registrasi-jarjastel-perusahaan', function () {
-    return view('registrasi/registrasi-jarjastel-perusahaan');
+Route::match(array('GET', 'POST'), '/registrasi-jarjastel-perusahaan', function(){
+    $provinsi = DB::table('provinsi')->get();
+    return view('registrasi/registrasi-jarjastel-perusahaan',['provinsi' => $provinsi]);
 });
 
-Route::get('/registrasi-jarjastel-pemohon', function () {
+Route::match(array('GET', 'POST'), '/registrasi-jarjastel-pemohon', function(){
+    // $provinsi = DB::table('provinsi')->get();
     return view('registrasi/registrasi-jarjastel-pemohon');
 });
 
@@ -83,11 +92,13 @@ Route::get('/login-telsusbh', function () {
 });
 
 Route::get('/registrasi-telsusbh-person', function () {
-    return view('registrasi/registrasi-telsusbh-person');
+    $provinsi = DB::table('provinsi')->get();
+    return view('registrasi/registrasi-telsusbh-person',['provinsi' => $provinsi]);
 });
 
 Route::get('/registrasi-telsusbh-perusahaan', function () {
-    return view('registrasi/registrasi-telsusbh-perusahaan');
+    $provinsi = DB::table('provinsi')->get();
+    return view('registrasi/registrasi-telsusbh-perusahaan',['provinsi' => $provinsi]);
 });
 
 Route::get('/registrasi-telsusbh-pemohon', function () {
@@ -104,7 +115,8 @@ Route::get('/login-telsusnbh', function () {
 });
 
 Route::get('/registrasi-telsusnbh-person', function () {
-    return view('registrasi/registrasi-telsusnbh-person');
+    $provinsi = DB::table('provinsi')->get();
+    return view('registrasi/registrasi-telsusnbh-person',['provinsi' => $provinsi]);
 });
 
 Route::get('/form-penomoran', function () {

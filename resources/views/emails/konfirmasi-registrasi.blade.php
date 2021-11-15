@@ -10,7 +10,7 @@
         </div>
         <div class="card-body p-9">
             <div class="row mb-4">
-                <div class="text-muted"><b>Resgistrasi</b> Sukses. Silahkan Cek Kotak Masuk Email Anda.</div>
+                <div class="text-muted"><b>Resgistrasi</b> Sukses. Silahkan Cek Kotak Masuk Email Anda atau <a href="login-jarjastel">Login disini</a>.</div>
             </div>
         </div>
     </div>
