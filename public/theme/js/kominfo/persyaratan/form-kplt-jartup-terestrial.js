@@ -19,7 +19,7 @@ var FormKpltJartupTerestrial = function () {
 		$("#simpan-kplt-jartup-terestrial").click(function() {			
 			$("#body-kplt-jartup-terestrial input[name=periode\\[\\]]").each(function() {
 			   periode.push($(this).val());
-			});		  
+			});
 		});
 		
 		$("#tambah-kplt-jartup-terestrial").click(function() {			
@@ -28,14 +28,22 @@ var FormKpltJartupTerestrial = function () {
 		
 		$("#body-kplt-jartup-terestrial").on('click','.remove',function(){
 	        $(this).parent().parent().remove();
-	    });
-		
+		});
+		var existing = getExisting();
+		if(existing.length == 0) {
+			$("#body-kplt-jartup-terestrial").append(kpltRow);
+		} else {
+			existing.forEach(item => {
+				$("#body-kplt-jartup-terestrial").append(kpltRow);
+			});
+		}
+		initiateCakupanWilayah();
 	}
 	
 	var kpltRow = `<tr>
 			            <td><input type="text" name="periode[]" class="form-control" placeholder="xxx"/></td>
 			            <td><input type="text" name="jumlah-unit[]" class="form-control" placeholder="xxx"/></td>
-			            <td><input type="text" name="cakupan-wilayah[]" class="form-control" placeholder="xxx"/></td>
+			            <td><select id="cakupan-wilayah[]" name="cakupan-wilayah[]" class="form-control form-select form-select-solid" data-control="select2"> </select></td>
 			            <td><input type="text" name="jumlah-kabel[]" class="form-control" placeholder="xxx"/></td>
 			            <td><input type="text" name="kapasistas-bw[]" class="form-control" placeholder="xxx"/></td>
 			            <td><input type="text" name="panjang-rute-kabel[]" class="form-control" placeholder="xxx"/></td>
@@ -49,7 +57,58 @@ var FormKpltJartupTerestrial = function () {
 								</span>
 							</button>
 							</td>
-				    </tr>`
+					</tr>`;
+	
+	var getExisting = function () {
+		var pathArray = window.location.pathname.split('/');
+		var id = pathArray[2];
+		var existing = [];
+		$.ajax({
+			type: 'GET',
+			url: "/persyaratan/kplt-jartup-terestrial/" + id,
+		}).then(function (data) {
+			existing = data;
+		});	
+		return existing;
+	}
+
+	var initiateCakupanWilayah = function () {		
+		$('#body-kplt-jartup-terestrial input[name=cakupan-wilayah\\[\\]]').each(function(index, element) {
+			$(this).select2({
+				placeholder: "Pilih Kota",
+				ajax: {
+					url:  function() {
+						return "/master/kota-provinsi"
+					},
+					dataType: 'json',
+					type: "get",
+					headers: {"X-CSRF-TOKEN": $("meta[name='csrf-token']").attr("content")},
+					data: function (params) {
+						return {
+							term: params.term
+						};
+					},
+					processResults: function (data) {
+						return {
+							results: $.map(data, function (item) {
+								var children = [];
+								for(var k in item){
+									var childItem = item[k.prov_name];
+									childItem.text = item[k.prov_name].city_name;
+									children.push(childItem);
+								}								
+								return {
+									text: item.prov_name,
+									children: children
+								}
+							})
+						};
+					}
+				}
+			});
+		});
+		
+	}
 	
 	return {
 		// Public Functions

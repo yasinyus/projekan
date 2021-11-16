@@ -50,7 +50,6 @@ var FormPersyaratan = function () {
 	}
 		
 	var handleSaveAllData = () => {
-		console.log(saveAllDataButton);
 		saveAllDataButton.addEventListener('click', function (e) {
             e.preventDefault();
             if ($('#checkbox-agreement').is(':checked')) {

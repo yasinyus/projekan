@@ -49,7 +49,7 @@
                                 <th class="min-w-210px">Tgl. KIB</th>
                                 <th class="min-w-120px">KBLI</th>
                                 <th class="min-w-250px">Jenis Penyelenggaraan</th>
-                                <th class="min-w-120px">Media Transmisi</th>
+                                <th class="min-w-120px">Status</th>
                                 <th class="text-end min-w-100px"></th>
                             </tr>
                             <!--end::Table row-->

@@ -27,7 +27,7 @@ var KTTablePerizinanDalamProses = function () {
                 { data: 'tanggal_kib', ordering: true},
                 { data: 'kbli' },
                 { data: 'jenis_penyelenggaraan' },
-                { data: 'media_transmisi', ordering:false },
+                { data: 'status', ordering:false },
                 { data: null },
             ],
             bSort: false,
