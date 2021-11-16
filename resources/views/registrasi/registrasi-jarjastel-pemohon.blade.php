@@ -5,7 +5,7 @@
     <div class="card-header" style="background-color: #600A88 !important;">
         <div class="card-title fs-3 fw-bolder text-light">PENDAFTARAN - DATA PEMOHON</div>
     </div>
-    <form id="kt_project_settings_form" class="form" action="{{ action('Sendemail@konfirmasi_jarjastel') }}" method="post">
+    <form id="kt_project_settings_form" class="form" action="konfirmasi-jarjastel-submit" method="post">
         @csrf <!-- {{ csrf_field() }} -->
         <div class="card-body p-9">
             <div class="fv-row mb-7">

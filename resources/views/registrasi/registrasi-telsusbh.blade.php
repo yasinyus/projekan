@@ -10,7 +10,7 @@
             <div class="card-title fs-3 fw-bolder text-light text-center">REGISTRASI TELEKOMUNIKASI KHUSUS BADAN HUKUM</div>
         </div>
         <div class="card-body p-9">
-            <form class="form w-100" id="kt_sign_up_form" action="{{ action('Sendemail@send_telsusbh') }}" method="post">
+            <form class="form w-100" id="kt_sign_up_form" action="registrasi-telsusbh-submit" method="post">
                 @csrf <!-- {{ csrf_field() }} -->
                 <div class="fv-row mb-7">
                     <label class="form-label fw-bolder text-dark fs-6">NIB<em style="color: red">*</em></label>

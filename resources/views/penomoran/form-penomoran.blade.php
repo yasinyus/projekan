@@ -4,7 +4,7 @@
 <h3 class="fs-2hx text-dark mb-5" id="how-it-works" data-kt-scroll-offset="{default: 100, lg: 150}">
     Penambahan Jenis Penomoran
 </h3>
-<form id="kt_project_settings_form" class="form" action="{{ action('Sendemail@penomoran_submit') }}" method="post">
+<form id="kt_project_settings_form" class="form" action="penomoran-submit" method="post">
     @csrf <!-- {{ csrf_field() }} -->
     <div class="card">
         <div class="card-header" style="background-color: #600A88 !important;">
@@ -112,7 +112,7 @@
             </div>
             <div class="fv-row mb-7">
                 <label class="form-label fw-bolder text-dark fs-6">Surat Pernyataan (*)</label>
-                <input class="form-control form-control-lg form-control" type="file" placeholder="" name="surat" autocomplete="off"/>
+                <input class="form-control form-control-lg form-control" type="file" placeholder="" name="surat" autocomplete="off" accept="application/pdf"/>
             </div>
             <div class="fv-row mb-7">
                 <div class="text-muted">Dengan ini saya menyatakan bahwa seluruh data yang disampaikan dalam SURAT PERNYATAAN adalah BENAR. Jika dikemudian hari data yang disampaikan terbukti tidak benar, maka kami siap menerima akibat hukum sesuai dengan ketentuan perundang-undangan</div>

@@ -7,6 +7,11 @@ use App\Http\Controllers\PerizinanController;
 use App\Http\Controllers\PersyaratanController;
 use App\Http\Controllers\Sendemail;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\ProvinsiController;
+use App\Http\Controllers\KotaController;
+use App\Http\Controllers\KecamatanController;
+use App\Http\Controllers\DesaController;
+use App\Http\Controllers\KodeposController;
 
 /*
 |--------------------------------------------------------------------------
@@ -28,22 +33,22 @@ Route::get('/', function () {
 });
 
 // Route::post('/registrasi-jarjastel-submit', 'Sendemail@send');
-Route::post('/registrasi-jarjastel-submit','Sendemail@send')->name('registrasi-jarjastel-submit');
-Route::post('/registrasi-telsusbh-submit','Sendemail@send_telsusbh')->name('registrasi-telsusbh-submit');
-Route::post('/registrasi-telsusnbh-submit','Sendemail@send_telsusnbh')->name('registrasi-telsusnbh-submit');
+Route::post('/registrasi-jarjastel-submit',[Sendemail::class, 'send'])->name('registrasi-jarjastel-submit');
+Route::post('/registrasi-telsusbh-submit',[Sendemail::class, 'send_telsusbh'])->name('registrasi-telsusbh-submit');
+Route::post('/registrasi-telsusnbh-submit',[Sendemail::class, 'send_telsusnbh'])->name('registrasi-telsusnbh-submit');
 
 // Route::post('/registrasi-jarjastel-submit', 'Sendemail@send');
-Route::post('/konfirmasi-jarjastel-submit','Sendemail@konfirmasi_jarjastel')->name('konfirmasi-jarjastel-submit');
-Route::post('/konfirmasi-telsusbh-submit','Sendemail@konfirmasi_telsusbh')->name('konfirmasi-telsusbh-submit');
-Route::post('/konfirmasi-telsusnbh-submit','Sendemail@konfirmasi_telsusnbh')->name('konfirmasi-telsusnbh-submit');
+Route::post('/konfirmasi-jarjastel-submit',[Sendemail::class, 'konfirmasi_jarjastel'])->name('konfirmasi-jarjastel-submit');
+Route::post('/konfirmasi-telsusbh-submit',[Sendemail::class, 'konfirmasi_telsusbh'])->name('konfirmasi-telsusbh-submit');
+Route::post('/konfirmasi-telsusnbh-submit',[Sendemail::class, 'konfirmasi_telsusnbh'])->name('konfirmasi-telsusnbh-submit');
 
-Route::post('/penomoran-submit','Sendemail@penomoran_submit')->name('penomoran-submit');
+Route::post('/penomoran-submit',[Sendemail::class, 'penomoran_submit'])->name('penomoran-submit');
 
-Route::post('/forget-password-submit','Sendemail@forget_password')->name('forget-password-submit');
-Route::get('/getKota/{id}', 'KotaController@getKota');
-Route::get('/getKecamatan/{id}', 'KecamatanController@getKecamatan');
-Route::get('/getDesa/{id}', 'DesaController@getDesa');
-Route::get('/getKodepos/{id}', 'KodeposController@getKodepos');
+Route::post('/forget-password-submit',[Sendemail::class, 'forget_password'])->name('forget-password-submit');
+Route::get('/getKota/{id}', [KotaController::class, 'getKota']);
+Route::get('/getKecamatan/{id}', [KecamatanController::class, 'getKecamatan']);
+Route::get('/getDesa/{id}', [DesaController::class, 'getDesa']);
+Route::get('/getKodepos/{id}', [KodeposController::class, 'getKodepos']);
 
 
 Route::get('/konfirmasi-msg', function () {
@@ -52,7 +57,9 @@ Route::get('/konfirmasi-msg', function () {
 Route::get('/konfirmasi-registrasi', function () {
     return view('emails/konfirmasi-registrasi');
 });
-Route::get('/penomoran-msg', function () {
+
+Route::match(array('GET', 'POST'), '/penomoran-msg', function(){
+    $provinsi = DB::table('provinsi')->get();
     return view('penomoran/penomoran-msg');
 });
 
@@ -96,15 +103,14 @@ Route::get('/registrasi-telsusbh-person', function () {
     return view('registrasi/registrasi-telsusbh-person',['provinsi' => $provinsi]);
 });
 
-Route::get('/registrasi-telsusbh-perusahaan', function () {
+Route::match(array('GET', 'POST'), '/registrasi-telsusbh-perusahaan', function(){
     $provinsi = DB::table('provinsi')->get();
     return view('registrasi/registrasi-telsusbh-perusahaan',['provinsi' => $provinsi]);
 });
 
-Route::get('/registrasi-telsusbh-pemohon', function () {
+Route::match(array('GET', 'POST'), '/registrasi-telsusbh-pemohon', function(){
     return view('registrasi/registrasi-telsusbh-pemohon');
 });
-
 
 Route::get('/registrasi-telsusnbh', function () {
     return view('registrasi/registrasi-telsusnbh');
@@ -114,7 +120,7 @@ Route::get('/login-telsusnbh', function () {
     return view('login/login-telsusnbh');
 });
 
-Route::get('/registrasi-telsusnbh-person', function () {
+Route::match(array('GET', 'POST'), '/registrasi-telsusnbh-person', function(){
     $provinsi = DB::table('provinsi')->get();
     return view('registrasi/registrasi-telsusnbh-person',['provinsi' => $provinsi]);
 });
