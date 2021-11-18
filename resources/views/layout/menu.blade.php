@@ -258,7 +258,7 @@
                             <i class="fa fa-user" style="font-size: 16px;"></i>
                             <span class="pulse-ring"></span>
                         </div>
-                        <div class="text-center" style="margin-left: 5px;">Febryan Ramadhan</div> 
+                        <div class="text-center" style="margin-left: 5px;">{{ auth()->user()->nama }}</div> 
                         <div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-800 menu-state-bg menu-state-primary fw-bold py-4 fs-6 w-275px" data-kt-menu="true" style="">
                             <div class="menu-item px-3">
                                 <div class="menu-content d-flex align-items-center px-3">
@@ -272,7 +272,10 @@
                                 <a href="#" class="menu-link px-5">Dashboard</a>
                             </div>
                             <div class="menu-item px-5">
-                                <a href="#" class="menu-link px-5">Keluar</a>
+                                <form action="{{ url('logout') }}" method="post">
+                                    @csrf
+                                    <button type="submit" class="menu-lg-dropdown">Keluar</button>
+                                </form>
                             </div>
                         </div>
                     </div>

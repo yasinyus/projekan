@@ -28,7 +28,7 @@
                                 <span class="menu-title text-light">Home</span>
                             </a>
                         </div>
-                        <div data-kt-menu-trigger="click" data-kt-menu-placement="bottom-start" class="menu-item menu-lg-down-accordion me-lg-1">
+                        {{-- <div data-kt-menu-trigger="click" data-kt-menu-placement="bottom-start" class="menu-item menu-lg-down-accordion me-lg-1">
                             <span class="menu-link py-3">
                                 <span class="menu-title text-light">Informasi</span>
                                 <span class="menu-arrow"></span>
@@ -108,7 +108,7 @@
                             <a class="menu-link py-3" href="#">
                                 <span class="menu-title text-light">News</span>
                             </a>
-                        </div>
+                        </div> --}}
                         <div class="menu-item me-lg-1">
                             <a class="menu-link py-3" href="#">
                                 <span class="menu-title text-light">Contact Us</span>

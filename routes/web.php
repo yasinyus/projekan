@@ -12,6 +12,8 @@ use App\Http\Controllers\KotaController;
 use App\Http\Controllers\KecamatanController;
 use App\Http\Controllers\DesaController;
 use App\Http\Controllers\KodeposController;
+use App\Http\Controllers\LoginController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -32,6 +34,13 @@ Route::get('/', function () {
     return view('homepage/home');
 });
 
+Route::get('/registrasi-jarjastel', function () { return view('registrasi/registrasi-jarjastel'); })->middleware('guest');
+Route::get('/registrasi-telsusbh', function () { return view('registrasi/registrasi-telsusbh'); })->middleware('guest');
+Route::get('/registrasi-telsusnbh', function () { return view('registrasi/registrasi-telsusnbh'); })->middleware('guest');
+Route::post('/registrasi-proses', [App\Http\Controllers\LoginController::class, 'registrasiProses'])->name('registerproses');
+Route::get('/registrasi-sukses', [App\Http\Controllers\LoginController::class, 'registrasiSukses'])->name('registrasiSukses');
+Route::get('/verifikasi/{token}', [App\Http\Controllers\LoginController::class, 'verifikasi'])->name('verifikasi');
+
 // Route::post('/registrasi-jarjastel-submit', 'Sendemail@send');
 Route::post('/registrasi-jarjastel-submit',[Sendemail::class, 'send'])->name('registrasi-jarjastel-submit');
 Route::post('/registrasi-telsusbh-submit',[Sendemail::class, 'send_telsusbh'])->name('registrasi-telsusbh-submit');
@@ -51,29 +60,21 @@ Route::get('/getDesa/{id}', [DesaController::class, 'getDesa']);
 Route::get('/getKodepos/{id}', [KodeposController::class, 'getKodepos']);
 
 
-Route::get('/konfirmasi-msg', function () {
-    return view('emails/konfirmasi-msg');
-});
-Route::get('/konfirmasi-registrasi', function () {
-    return view('emails/konfirmasi-registrasi');
-});
-
+Route::get('/konfirmasi-msg', function () { return view('emails/konfirmasi-msg'); });
+Route::get('/konfirmasi-registrasi', function () { return view('emails/konfirmasi-registrasi'); });
 Route::match(array('GET', 'POST'), '/penomoran-msg', function(){
     $provinsi = DB::table('provinsi')->get();
     return view('penomoran/penomoran-msg');
 });
 
-Route::get('/forget-password', function () {
-    return view('login/forget-password');
-});
+Route::get('/forget-password', function () { return view('login/forget-password'); });
 
-Route::get('/registrasi-jarjastel', function () {
-    return view('registrasi/registrasi-jarjastel');
-});
-
-Route::get('/login-jarjastel', function () {
-    return view('login/login-jarjastel');
-});
+Route::get('/login/{id}', [App\Http\Controllers\LoginController::class, 'index'])->middleware('guest');
+Route::post('/login-proses', [App\Http\Controllers\LoginController::class, 'loginProses'])->name('loginproses');
+Route::get('/login-jarjastel', function () { return view('login/login-jarjastel'); })->middleware('guest');
+Route::get('/login-telsusnbh', function () { return view('login/login-telsusnbh'); })->middleware('guest');
+Route::get('/login-telsusbh', function () { return view('login/login-telsusbh'); })->middleware('guest');
+Route::post('/logout',[App\Http\Controllers\LoginController::class, 'logout']);
 
 Route::match(array('GET', 'POST'), '/registrasi-jarjastel-person', function(){
     $provinsi = DB::table('provinsi')->get();
@@ -90,14 +91,6 @@ Route::match(array('GET', 'POST'), '/registrasi-jarjastel-pemohon', function(){
     return view('registrasi/registrasi-jarjastel-pemohon');
 });
 
-Route::get('/registrasi-telsusbh', function () {
-    return view('registrasi/registrasi-telsusbh');
-});
-
-Route::get('/login-telsusbh', function () {
-    return view('login/login-telsusbh');
-});
-
 Route::get('/registrasi-telsusbh-person', function () {
     $provinsi = DB::table('provinsi')->get();
     return view('registrasi/registrasi-telsusbh-person',['provinsi' => $provinsi]);
@@ -112,13 +105,8 @@ Route::match(array('GET', 'POST'), '/registrasi-telsusbh-pemohon', function(){
     return view('registrasi/registrasi-telsusbh-pemohon');
 });
 
-Route::get('/registrasi-telsusnbh', function () {
-    return view('registrasi/registrasi-telsusnbh');
-});
 
-Route::get('/login-telsusnbh', function () {
-    return view('login/login-telsusnbh');
-});
+
 
 Route::match(array('GET', 'POST'), '/registrasi-telsusnbh-person', function(){
     $provinsi = DB::table('provinsi')->get();
