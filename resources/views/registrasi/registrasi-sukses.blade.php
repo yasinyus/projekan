@@ -1,4 +1,4 @@
-@extends('layout.template')
+@extends('layout.template-home')
 
 @section('container')
 <div class="d-flex flex-center flex-column flex-column-fluid p-10 pb-lg-20">

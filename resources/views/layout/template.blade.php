@@ -46,12 +46,12 @@
                                     <li class="breadcrumb-item text-white col-lg-3">
                                         <a href="/riwayat-perizinan" class="text-white text-hover-primary">Manajemen Perizinan</a>
                                     </li>
-                                    <li class="breadcrumb-item text-white col-lg-3">
+                                    {{-- <li class="breadcrumb-item text-white col-lg-3">
                                         <a href="" class="text-white text-hover-primary">Layanan Informasi</a>
                                     </li>
                                     <li class="breadcrumb-item text-white col-lg-3">
                                         <a href="" class="text-white text-hover-primary">Layanan Kontak</a>
-                                    </li>
+                                    </li> --}}
                                 </ul>
                             </div>
                         </div>

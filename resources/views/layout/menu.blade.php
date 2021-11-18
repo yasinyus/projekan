@@ -25,7 +25,7 @@
                                 <span class="menu-title text-dark">Home</span>
                             </a>
                         </div>
-                        <div data-kt-menu-trigger="click" data-kt-menu-placement="bottom-start" class="menu-item menu-lg-down-accordion me-lg-1">
+                        {{-- <div data-kt-menu-trigger="click" data-kt-menu-placement="bottom-start" class="menu-item menu-lg-down-accordion me-lg-1">
                             <span class="menu-link py-3">
                                 <span class="menu-title text-dark">Layanan</span>
                                 <span class="menu-arrow"></span>
@@ -242,7 +242,7 @@
                             <a class="menu-link py-3" href="#">
                                 <span class="menu-title text-dark">Pengaduan</span>
                             </a>
-                        </div>
+                        </div> --}}
                     </div>
                     <!--end::Menu-->
                 </div>
@@ -272,9 +272,9 @@
                                 <a href="#" class="menu-link px-5">Dashboard</a>
                             </div>
                             <div class="menu-item px-5">
-                                <form action="{{ url('logout') }}" method="post">
+                                <form action="{{ url('logout') }}" class="menu-link px-5" method="post">
                                     @csrf
-                                    <button type="submit" class="menu-lg-dropdown">Keluar</button>
+                                    <button type="submit" class="menu-lg-dropdown" style="border:none; background:none;">Keluar</button>
                                 </form>
                             </div>
                         </div>

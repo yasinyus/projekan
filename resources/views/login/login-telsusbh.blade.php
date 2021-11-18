@@ -7,26 +7,35 @@
     </div>
     <div class="card w-lg-500px">
         <div class="card-header text-center" style="background-color: #600A88 !important;">
-            <div class="card-title fs-3 fw-bolder text-light text-center">LOGIN TELEKOMUNIKASI KHUSUS BADAN HUKUM</div>
+            <div class="card-title fs-3 fw-bolder text-light text-center">LOGIN TEKOMUNIKASI KHUSUS BADAN HUKUM</div>
         </div>
         <div class="card-body p-9">
-                <form class="form w-100" id="kt_sign_in_form" action="registrasi-telsusbh-person/" method="post">
+            {{-- <div class="w-lg-500px bg-body rounded shadow-sm p-10 p-lg-15 mx-auto"> --}}
+                <form class="form w-100"  id="kt_sign_in_form" action="{{ url('login-proses') }}" method="post">
                     @csrf <!-- {{ csrf_field() }} -->
                     <div class="fv-row mb-5">
                         <label class="form-label fs-6 fw-bolder text-dark">Alamat Email</label>
-                        <input class="form-control form-control-lg form-control" type="email" placeholder="Masukan Alamat Email" id="email" name="email" autocomplete="off" required/>
+                        <input class="form-control form-control-lg form-control @error('email') is-invalid @enderror" type="email" placeholder="Masukan Alamat Email" id="email" name="email" value="{{ old('email') }}" autocomplete="off" required />
+                        @error('email')
+                            <div class="invalid-feedback">
+                                {{ $message }}
+                            </div>
+                        @enderror
                     </div>
                     <div class="mb-5 fv-row">
-                        <div class="mb-1">
+                        <div class="mb-5">
                             <label class="form-label fw-bolder text-dark fs-6">Password</label>
-                            <div class="position-relative mb-3">
-                                <input class="form-control form-control-lg form-control" type="password" placeholder="Masukan Password Anda" id="password" name="password" autocomplete="off" required/>
+                            <input class="form-control form-control-lg form-control @error('password') is-invalid @enderror" type="password" placeholder="Masukan Password Anda" id="password" name="password" required autocomplete="off" />
+                            @error('password')
+                            <div class="invalid-feedback">
+                                {{ $message }}
                             </div>
+                        @enderror
                     </div>
                     <div class="fv-row mb-5">
                         <label class="form-check form-check-custom form-check form-check-inline">
                             <span class="form-check-label fw-bold text-gray-700 fs-6">Lupa Password?
-                            <a href="forget-password/" class="ms-1 link-primary">Klik Disini</a>.</span>
+                            <a href="{{ url('forget-password') }}" class="ms-1 link-primary">Klik Disini</a>.</span>
                         </label>
                     </div>
                     <div class="fv-row mb-5">
@@ -41,32 +50,56 @@
                         </button>
                     </div>
                     <div class="text-center mb-5">
+                        {{-- <h3 class="text-dark mb-3">LOGIN JARINGAN/JASA TEKOMUNIKASI</h3> --}}
                         <div class="text-gray-400 fw-bold fs-4">Belum punya akun?
-                        <a href="registrasi-telsusbh" class="link-primary fw-bolder">Daftar</a></div>
+                        <a href="{{ url('registrasi-telsusbh') }}" class="link-primary fw-bolder">Daftar</a></div>
                     </div>
                 </form>
+            {{-- </div> --}}
         </div>
     </div>
 </div>
+@push('scripts')
+    <script>
+        function recaptchaCallback() {
+            if($("#email").val()!="" && $("#password").val()!=""){
+                $('#kt_sign_in_submit').removeAttr('disabled');
+            }else{
+                recaptchachecked = false;
+            }
+        };
 
-<script>
-    $("#kt_sign_in_submit").click(function(){
-        if($("#email").val()=="" && $("#password").val()==""){
-            event.preventDefault();
-            swal("Peringatan!", "Mohon isi alamat email dan password", "warning");
-        }else if($("#email").val()==""){
-            event.preventDefault();
-            swal("Peringatan!", "Mohon isi alamat email anda", "warning");
-        }else if($("#password").val()==""){
-            event.preventDefault();
-            swal("Peringatan!", "Mohon isi password anda", "warning");
-        }else if(grecaptcha.getResponse()==""){
-            event.preventDefault();
-            swal("Peringatan!", "Mohon isi captcha!", "warning");
-        }else{
-            event.preventDefault();
-            window.location.href = 'registrasi-telsusbh-person';
-        }
-    });
-</script>
+        $("#kt_sign_in_submit").click(function(){
+            // if(g-recaptcha.getResponse() == "") {
+            //         e.preventDefault();
+            //         alert("You can't proceed!");
+            //     } else {
+            //         alert("Thank you");
+            //     }
+            if($("#email").val()=="" && $("#password").val()==""){
+                event.preventDefault();
+                swal("Peringatan!", "Mohon isi alamat email dan password!", "warning");
+            }else if($("#email").val()==""){
+                event.preventDefault();
+                swal("Peringatan!", "Mohon isi alamat email anda!", "warning");
+            }else if($("#password").val()==""){
+                event.preventDefault();
+                swal("Peringatan!", "Mohon isi password anda!", "warning");
+            }else if(grecaptcha.getResponse()==""){
+                event.preventDefault();
+                swal("Peringatan!", "Mohon isi captcha!", "warning");
+            }else{
+                // event.preventDefault();
+                // window.location.href = 'registrasi-jarjastel-person';
+            }
+        });
+            
+    </script>
+    @if(session()->has('loginError'))
+    <script>
+        swal("Gagal!", "{{ session('loginError') }}", "error");
+    </script>
+    @endif
+@endpush
+
 @endsection

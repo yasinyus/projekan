@@ -5,7 +5,7 @@
     <div class="card-header" style="background-color: #600A88 !important;">
         <div class="card-title fs-3 fw-bolder text-light">IDENTITAS PENANGGUNG JAWAB</div>
     </div>
-    <form id="kt_project_settings_form" class="form" action="registrasi-jarjastel-perusahaan/" method="post">
+    <form id="kt_project_settings_form" class="form" action="{{ url('proses-penanggung-jawab') }}" method="post">
         @csrf <!-- {{ csrf_field() }} -->
         <div class="card-body p-9">
             <div class="fv-row mb-7">
@@ -13,57 +13,66 @@
                     Kriteria Penanggung Jawab<em style="color: red">*</em> :
                 </label>
             </div>
+            @foreach ($kriteria as $data_kriteria)
             <div class="fv-row mb-7">
-                <input class="form-check-input" type="radio" value="" id="kriteria1" name="kriteria" required/>
-                <label class="form-check-label" for="kriteria1">
-                    Anda Seorang Direktur/Pimpinan Instansi dan Perusahaan anda merupakan Instansi Pemerintah
+                <input class="form-check-input" @if(old('kriteria')==$data_kriteria->id) checked @endif type="radio" value="{{ $data_kriteria->id }}" id="kriteria{{ $data_kriteria->id }}" name="kriteria" required/>
+                <label class="form-check-label" for="kriteria{{ $data_kriteria->id }}">
+                    {{ $data_kriteria->kriteria }}
                 </label>
             </div>
-            <div class="fv-row mb-7">
-                <input class="form-check-input" type="radio" value="" id="kriteria2" name="kriteria"/>
-                <label class="form-check-label" for="kriteria2">
-                    Anda Seorang Direktur/Pimpinan Instansi dan Perusahaan anda <b>bukan</b> merupakan Instansi Pemerintah
-                </label>
-            </div>
-            <div class="fv-row mb-7">
-                <input class="form-check-input" type="radio" value="" id="kriteria3" name="kriteria"/>
-                <label class="form-check-label" for="kriteria3">
-                    Anda <b>bukan</b> Seorang Direktur/Pimpinan Instansi dan Perusahaan anda merupakan Instansi Pemerintah
-                </label>
-            </div>
-            <div class="fv-row mb-7">
-                <input class="form-check-input" type="radio" value="" id="kriteria4" name="kriteria"/>
-                <label class="form-check-label" for="kriteria4">
-                    Anda <b>bukan</b> Seorang Direktur/Pimpinan Instansi dan Perusahaan <b>bukan</b> bukan merupakan Instansi Pemerintah
-                </label>
-            </div>
+            @endforeach
             <div class="fv-row mb-7">
                 <label class="form-label fw-bolder text-dark fs-6">Nama Penanggung Jawab<em style="color: red">*</em></label>
-                <input class="form-control form-control-lg form-control" type="text" placeholder="Masukan Nama Lengkap" id="name" name="name" autocomplete="off" required/>
+                <input class="form-control form-control-lg form-control @error('name') is-invalid @enderror" type="text" placeholder="Masukan Nama Lengkap" id="name" name="name" value="{{ old('name') }}" autocomplete="off" required/>
+                @error('name')
+                    <div class="invalid-feedback">
+                        {{ $message }}
+                    </div>
+                @enderror
             </div>
             <div class="fv-row mb-7">
                 <label class="form-label fw-bolder text-dark fs-6">Email Penanggung Jawab<em style="color: red">*</em></label>
-                <input class="form-control form-control-lg form-control" type="email" placeholder="Masukan Alamat Email" id="email" name="email" autocomplete="off" required/>
+                <input class="form-control form-control-lg form-control @error('email') is-invalid @enderror" type="email" placeholder="Masukan Alamat Email" id="email" name="email" value="{{ old('email') }}" autocomplete="off" required/>
+                @error('email')
+                    <div class="invalid-feedback">
+                        {{ $message }}
+                    </div>
+                @enderror
             </div>
             <div class="row mb-4">
                 <div class="col-xl-6 fv-row">
                         <label class="form-label fw-bolder text-dark fs-6">Nomor KTP Penanggung Jawab<em style="color: red">*</em></label>
-                        <input class="form-control form-control-lg form-control" type="text" placeholder="Masukan No. KTP Penanggung Jawab" id="nik" name="nik" autocomplete="off" required/>
+                        <input class="form-control form-control-lg form-control @error('nik') is-invalid @enderror" type="text" placeholder="Masukan No. KTP Penanggung Jawab" id="nik" name="nik" value="{{ old('nik') }}" maxlength="16" minlength="16" autocomplete="off" required/>
                         <div class="text-muted">KTP Pemohon adalah KTP penerima kuasa untuk mengurus izin. Jika pemohon adalah Direktur Perusahaan, maka KTP pemohon adalah KTP Direktur.</div>
+                        @error('nik')
+                            <div class="invalid-feedback">
+                                {{ $message }}
+                            </div>
+                        @enderror
                 </div>
                 <div class="col-xl-6 fv-row">
                         <label class="form-label fw-bolder text-dark fs-6">No Telepon / HP Penanggung Jawab<em style="color: red">*</em></label>
-                        <input class="form-control form-control-lg form-control" type="text" placeholder="Masukan No. Telepon Penanggung Jawab" id="phone" name="phone" autocomplete="off" required/>
+                        <input class="form-control form-control-lg form-control @error('phone') is-invalid @enderror" type="text" placeholder="Masukan No. Telepon Penanggung Jawab" id="phone" name="phone" value="{{ old('phone') }}" autocomplete="off" required/>
+                        @error('phone')
+                            <div class="invalid-feedback">
+                                {{ $message }}
+                            </div>
+                        @enderror
                 </div>
             </div>
             <div class="row mb-4">
                 <div class="col-xl-6 fv-row">
                         <label class="form-label fw-bolder text-dark fs-6">Nama Jalan<em style="color: red">*</em></label>
-                        <input class="form-control form-control-lg form-control" type="text" placeholder="" id="street" name="street" autocomplete="off" required/>
+                        <input class="form-control form-control-lg form-control @error('street') is-invalid @enderror" type="text" placeholder="" id="street" name="street" value="{{ old('street') }}" autocomplete="off" required/>
+                        @error('street')
+                            <div class="invalid-feedback">
+                                {{ $message }}
+                            </div>
+                        @enderror
                 </div>
                 <div class="col-xl-6 fv-row">
                         <label class="form-label fw-bolder text-dark fs-6">Provinsi<em style="color: red">*</em></label>
-                        <select class="form-select" data-control="select2" id="provinsi" name="provinsi" data-placeholder="Pilih Provinsi" required>
+                        <select class="form-select  @error('provinsi') is-invalid @enderror" data-control="select2" id="provinsi" name="provinsi" data-placeholder="Pilih Provinsi" required>
                             <option></option>
                             @foreach ($provinsi as $data)
                                 <option value="{{ $data->prov_id }}">{{ $data->prov_name }}</option>

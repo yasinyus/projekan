@@ -1,18 +1,19 @@
 <?php
 
+use App\Http\Controllers\Sendemail;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\DesaController;
+use App\Http\Controllers\KotaController;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\LoginController;
 use App\Http\Controllers\MasterController;
+use App\Http\Controllers\KodeposController;
+use App\Http\Controllers\ProvinsiController;
+use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\KecamatanController;
 use App\Http\Controllers\PerizinanController;
 use App\Http\Controllers\PersyaratanController;
-use App\Http\Controllers\Sendemail;
-use App\Http\Controllers\UserController;
-use App\Http\Controllers\ProvinsiController;
-use App\Http\Controllers\KotaController;
-use App\Http\Controllers\KecamatanController;
-use App\Http\Controllers\DesaController;
-use App\Http\Controllers\KodeposController;
-use App\Http\Controllers\LoginController;
+use App\Http\Controllers\PenanggungJawabController;
 
 
 /*
@@ -81,20 +82,18 @@ Route::match(array('GET', 'POST'), '/registrasi-jarjastel-person', function(){
     return view('registrasi/registrasi-jarjastel-person',['provinsi' => $provinsi]);
 });
 
-Route::match(array('GET', 'POST'), '/registrasi-jarjastel-perusahaan', function(){
-    $provinsi = DB::table('provinsi')->get();
-    return view('registrasi/registrasi-jarjastel-perusahaan',['provinsi' => $provinsi]);
-});
+Route::get('/registrasi-jarjastel-person', [App\Http\Controllers\PenanggungJawabController::class, 'jarjastel'])->middleware('auth');
+Route::post('/proses-penanggung-jawab', [App\Http\Controllers\PenanggungJawabController::class, 'prosesPenanggungJawab']);
+Route::get('/registrasi-jarjastel-perusahaan', [App\Http\Controllers\PerusahaanController::class, 'jarjastel'])->middleware('auth');
+Route::post('/proses-perusahaan', [App\Http\Controllers\PerusahaanController::class, 'prosesPerusahaan']);
+Route::get('/registrasi-jarjastel-pemohon', [App\Http\Controllers\PemohonController::class, 'jarjastel'])->middleware('auth');
+Route::post('/proses-pemohon', [App\Http\Controllers\PemohonController::class, 'prosesPemohon']);
 
-Route::match(array('GET', 'POST'), '/registrasi-jarjastel-pemohon', function(){
-    // $provinsi = DB::table('provinsi')->get();
-    return view('registrasi/registrasi-jarjastel-pemohon');
-});
-
-Route::get('/registrasi-telsusbh-person', function () {
-    $provinsi = DB::table('provinsi')->get();
-    return view('registrasi/registrasi-telsusbh-person',['provinsi' => $provinsi]);
-});
+Route::get('/registrasi-telsusbh-person', [App\Http\Controllers\PenanggungJawabController::class, 'telsusbh'])->middleware('auth');
+// Route::get('/registrasi-telsusbh-person', function () {
+//     $provinsi = DB::table('provinsi')->get();
+//     return view('registrasi/registrasi-telsusbh-person',['provinsi' => $provinsi]);
+// });
 
 Route::match(array('GET', 'POST'), '/registrasi-telsusbh-perusahaan', function(){
     $provinsi = DB::table('provinsi')->get();
@@ -128,7 +127,7 @@ Route::get('/riwayat-perizinan', function () {
 
 Route::get('/dashboard', function () {
     return view('dashboard');
-});
+})->middleware('auth');
 Route::get('/perizinan/email-perizinan', function () {
     return view('perizinan/email-perizinan');
 });
